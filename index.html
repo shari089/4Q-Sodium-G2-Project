@@ -207,15 +207,13 @@
 <!-- Overlay for the login form -->
 <div class="overlay" id="overlay" style="display: none;">
 	<form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
-		<legend id="login-legend">LOG IN</legend>
+		<legend id="login-legend">ENTER USERNAME</legend>
 		<br>
-		<label for="username">Username: </label>
+		<label for="username">USERNAME: </label>
 		<input type="text" id="username" name="username" required>
 		<br><br>
-		<label for="password">Password: </label>
-		<input type="password" id="password" name="password" required>
-		<br><br>
-		<input type="submit" class="log-in-btn" value="Submit">
+		<input type="reset" class="log-in-btn" value="RESET">
+		<input type="submit" class="log-in-btn" value="SUBMIT">
 	</form>
 </div>
 
@@ -243,9 +241,9 @@
 			</ul>
 		</nav>
 		<div class="actions">
-			<button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Log In</button>
+			<button id="login-btn" class="log-in-btn" onclick="showLoginForm()">ENTER USERNAME</button>
 			<span id="welcome-message" class="welcome-message"></span>
-			<button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
+			<button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">PLAY</button>
 		</div>
 	</div>
 </header>
