@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Picture Pairs</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF6DA;
+            overflow-y: auto;
+            font-family: 'Exo 2', sans-serif !important;
+        }
+        .header {
+            position: relative; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #DFD0B8;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .container-1 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .logo img {
+            max-height: 50px;
+            width: auto;
+            padding-left: 30px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-list a {
+            text-decoration: none;
+            color: #3C5B6F;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Exo 2', sans-serif !important;
+            text-transform: uppercase;
+            padding: 15px 10px;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .nav-list a:hover, #nav-active:hover {
+            color: #153448;
+        }
+        #nav-active {
+            text-decoration: none;
+            color: #153448;
+            font-size: 20px;
+            font-weight: 700;
+            font-family: 'Exo 2', sans-serif !important;
+            text-transform: uppercase;
+            padding: 15px 10px;
+            letter-spacing: 2px;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+        .actions {
+            display: flex;
+            right: 20px;
+            align-items: center;
+            gap: 10px;
+        }
+        .search {
+            position: relative;
+            display: flex;
+            align-items: center;
+            background-color: #DFD0B8;
+            border: 1px solid transparent;
+            border-radius: 9px;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            overflow: hidden;
+        }
+        .search:focus-within {
+            width: 200px;
+            border: 1px solid #153448;
+        }
+        .search-btn {
+            background: none;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 1;
+        }
+        .search-btn img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            transition: filter 0.3s ease;
+        }
+        .search-btn:hover img {
+            filter: brightness(0) saturate(100%) invert(26%) sepia(100%) saturate(500%) hue-rotate(346deg) brightness(110%) contrast(105%);
+            transition: filter 0.3s ease;
+        }
+        .search-input {
+            background: #DFD0B8;
+            border: none;
+            color: #000;
+            font-size: 16px;
+            outline: none;
+            width: 0;
+            opacity: 0;
+            transform: scaleX(0);
+            transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+            padding: 5px 10px 5px 40px;
+            border-radius: 9px;
+        }
+        .search:focus-within .search-input {
+            width: 160px;
+            opacity: 1;
+            transform: scaleX(1);
+        }
+        .btn {
+            text-decoration: none;
+            background-color: rgba(223,0,125,0.3);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+        }
+        .btn:hover, .btn:active {
+            background-color: rgba(223,0,125,1);
+            color: #fff;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+            transform: scale(1.1);
+        }        
+
+        .log-in-btn {
+            text-decoration: none;
+            background-color: rgba(223,0,125,0.8);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 9px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+        }
+        .log-in-btn:hover, .log-in-btn:active {
+            background-color: rgba(223,0,125,1);
+            color: #fff;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            display: none;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .field_set {
+            position: absolute;
+            font-size: 17px;
+            z-index: 2000;
+            border: 2px solid #000;
+            background-color: rgba(234,159,198,0.2);
+            padding: 20px;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+            text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
+            backdrop-filter: blur(5px);
+            font-weight: 700;
+        }  
+
+        article {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .card {
+            width: 40%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(223,0,125,0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        .card h2 {
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Overlay for the login form -->
+<div class="overlay" id="overlay">
+    <form action="index.html" class="field_set" onsubmit="return onLoginSubmit();">
+        <legend id="login-legend">LOG IN</legend>
+        <br>
+        <label for="username">Username: </label>
+        <input type="text" id="username" name="username" autocomplete="username" required>
+        <br><br>
+        <label for="password">Password: </label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required>
+        <br><br>
+        <input type="submit" class="log-in-btn" value="Submit">
+    </form>
+</div>
+
+<!-- Overlay for the difficulty level pop-up -->
+<div class="overlay" id="difficulty-overlay">
+    <div class="field_set">
+        <h2>Choose Difficulty Level</h2>
+        <button class="btn" onclick="window.location.href='easy.html';">Easy</button>
+        <button class="btn" onclick="window.location.href='hard.html';">Hard</button>
+    </div>
+</div>
+
+<!-- Header -->
+<header class="header">
+    <div class="container-1">
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <img src="images/icon.jpg" alt="Logo">
+        </a>
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a id="nav-active" href="xyz.html">LEADERBOARD</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+        <!-- Search and CTA -->
+        <div class="search">
+            <button class="search-btn">
+                <img src="images/magnifying-glass-solid.svg" alt="Search Icon">
+            </button>
+            <input type="text" class="search-input" placeholder="Search...">
+        </div>
+        <a href="#" class="btn" id="login-btn" onclick="showLoginForm()">Log in</a>
+    </div>
+</header>
+
+<!-- Display greeting if username exists -->
+<h1 id="welcome-message"></h1>
+
+<!-- Cards for the game rules -->
+	<article>
+				<div class="card">
+					<h2>Mechanics and Win Conditions</h2>
+					<p><strong>Card Flip Mechanic:</strong> Players flip cards to reveal pictures or scientists and inventions.</p>
+					<p><strong>Matching Mechanic:</strong> Players match identical pictures or scientists with their corresponding inventions.</p>
+					<p><strong>Time Limit Mechanic:</strong> The game ends when the time limit is reached.</p>
+				</div>
+
+				<div class="card">
+					<h2>Win Condition</h2>
+					<p><strong>Easy Version:</strong> Find all matching pairs before time runs out.</p>
+					<p><strong>Hard Version:</strong> Achieve a high score without reaching the Game Over Threshold.</p>
+				</div>
+
+				<div class="card">
+					<h2>Game Over Threshold</h2>
+					<p><strong>Easy Version:</strong> Not applicable.</p>
+					<p><strong>Hard Version:</strong> Game ends if the player's score reaches -20 or they correctly match all pairs.</p>
+				</div>
+
+				<div class="card">
+					<h2>Rules and Constraints</h2>
+					<p><strong>Card Selection:</strong> Players can only select two cards at a time.</p>
+					<p><strong>Matching Rules:</strong> Pictures or scientists and inventions must match exactly.</p>
+					<p><strong>Time Limit:</strong> The game has a set time limit.</p>
+				</div>
+
+				<div class="card">
+					<h2>Scoring System</h2>
+					<p><strong>Correct Match:</strong> +10 points</p>
+					<p><strong>Incorrect Match:</strong> -2 points</p>
+					<p><strong>Combo Bonus:</strong> +15 points for every 3 correct matches in a row</p>
+				</div>
+			</article>
+		</section>
+
+<script>
+    // Function to handle form submission
+    function onLoginSubmit() {
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        
+        // Store username and password in local storage
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+
+        // Display a welcome message
+        document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
+
+        // Hide the login form (overlay)
+        document.getElementById("overlay").style.display = "none";
+
+        // Change the button text to "Play"
+        document.getElementById("login-btn").innerText = "Play";
+        document.getElementById("login-btn").onclick = showDifficultyOverlay;
+
+        return false; // Prevent form from reloading the page
+    }
+
+    // Function to show the login form when the "Log in" button is clicked
+    function showLoginForm() {
+        document.getElementById("overlay").style.display = "flex";
+    }
+
+    // Function to show the difficulty level overlay when the "Play" button is clicked
+    function showDifficultyOverlay() {
+        document.getElementById("difficulty-overlay").style.display = "flex";
+    }
+
+    // Check if the user is already logged in and display the "Play" button
+    window.onload = function() {
+        let savedUsername = localStorage.getItem("username");
+
+        if (savedUsername) {
+            document.getElementById("welcome-message").innerText = `Welcome, ${savedUsername}!`;
+
+            document.getElementById("login-btn").innerText = "Play";
+            document.getElementById("login-btn").onclick = showDifficultyOverlay;
+        }
+    };
+</script>
+
+</body>
+</html>
