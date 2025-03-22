@@ -44,8 +44,7 @@
             width: 100%;
             justify-content: center;
             align-items: center;
-            z-index: 2000;
-            backdrop-filter: blur(5px);
+            z-index: 1999;
             background-color: rgba(0, 0, 0, 0);
         }
         .field_set {
@@ -62,6 +61,7 @@
             width: 300px;
             top: 50%;
             left: 50%;
+            z-index: 2000;
             transform: translate(-50%, -50%);
         }
         .close-btn {
@@ -93,6 +93,34 @@
         .log-in-btn:hover, .btn:hover {
             background-color: rgba(223,0,125,1);
             transform: scale(1.1);
+        }
+
+        /* Game Rules Section */
+        .card {
+            width: 40%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(223,0,125,0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        .card h2 {
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+        section {
+            padding: 40px 20px;
         }
     </style>
 </head>
@@ -143,6 +171,44 @@
         </div>
     </div>
 </header>
+
+<!-- Game Rules Cards -->
+<section>
+    <article>
+        <div class="card">
+            <h2>Mechanics and Win Conditions</h2>
+            <p><strong>Card Flip Mechanic:</strong> Players flip cards to reveal pictures or scientists and inventions.</p>
+            <p><strong>Matching Mechanic:</strong> Players match identical pictures or scientists with their corresponding inventions.</p>
+            <p><strong>Time Limit Mechanic:</strong> The game ends when the time limit is reached.</p>
+        </div>
+
+        <div class="card">
+            <h2>Win Condition</h2>
+            <p><strong>Easy Version:</strong> Find all matching pairs before time runs out.</p>
+            <p><strong>Hard Version:</strong> Achieve a high score without reaching the Game Over Threshold.</p>
+        </div>
+
+        <div class="card">
+            <h2>Game Over Threshold</h2>
+            <p><strong>Easy Version:</strong> Not applicable.</p>
+            <p><strong>Hard Version:</strong> Game ends if the player's score reaches -20 or they correctly match all pairs.</p>
+        </div>
+
+        <div class="card">
+            <h2>Rules and Constraints</h2>
+            <p><strong>Card Selection:</strong> Players can only select two cards at a time.</p>
+            <p><strong>Matching Rules:</strong> Pictures or scientists and inventions must match exactly.</p>
+            <p><strong>Time Limit:</strong> The game has a set time limit.</p>
+        </div>
+
+        <div class="card">
+            <h2>Scoring System</h2>
+            <p><strong>Correct Match:</strong> +10 points</p>
+            <p><strong>Incorrect Match:</strong> -2 points</p>
+            <p><strong>Combo Bonus:</strong> +15 points for every 3 correct matches in a row</p>
+        </div>
+    </article>
+</section>
 
 <script>
     // Function to handle form submission
