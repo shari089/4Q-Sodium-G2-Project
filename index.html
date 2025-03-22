@@ -1,365 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Picture Pairs</title>
-	<style>
-		body {
-			margin: 0;
-			background-color: #FFF6DA;
-			overflow-y: auto;
-			font-family: 'Exo 2', sans-serif !important;
-		}
-		.header {
-			position: relative; 
-			top: 0;
-			left: 0;
-			width: 100%;
-			background-color: #DFD0B8;
-			padding: 10px 20px;
-			z-index: 1000;
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-		}
-		.container-1 {
-			display: flex;
-			justify-content: space-between;
-			width: 100%;
-			max-width: 1200px;
-			margin: 0 auto;
-			align-items: center;
-		}
-		.logo img {
-			max-height: 50px;
-			width: auto;
-			padding-left: 30px;
-		}
-
-		.nav-list {
-			list-style: none;
-			display: flex;
-			gap: 30px;
-			margin: 0;
-			padding: 0;
-		}
-		.nav-list a {
-			text-decoration: none;
-			color: #3C5B6F;
-			font-size: 20px;
-			font-weight: 700;
-			text-transform: uppercase;
-			padding: 15px 10px;
-			letter-spacing: 2px;
-			position: relative;
-			transition: color 0.2s ease;
-		}
-		.nav-list a::after {
-			content: "";
-			position: absolute;
-			left: 0;
-			bottom: -2px;
-			width: 0;
-			height: 3px;
-			background-color: #153448;
-			transition: width 0.3s ease;
-			border-radius: 5px;
-		}
-		.nav-list a:hover::after, .nav-list a:active::after {
-			width: 100%;
-			background-color: #153448;
-			cursor: pointer;
-		}
-		.nav-list a:hover, #nav-active:hover{
-			color: #153448;
-		}
-		.nav-list a:active, #nav-active:active{
-			color: #153448;
-		}
-		#nav-active {
-			text-decoration: none;
-			color: #153448;
-			font-size: 20px;
-			font-weight: 700;
-			text-transform: uppercase;
-			padding: 15px 10px;
-			letter-spacing: 2px;
-			position: relative;
-			transition: color 0.2s ease;
-		}
-		.actions {
-			display: flex;
-			right: 20px;
-			align-items: center;
-			gap: 10px;
-		}
-	
-		.btn {
-			text-decoration: none;
-			background-color: rgba(223,0,125,0.3);
-			color: #fff;
-			padding: 10px 20px;
-			border-radius: 9px;
-			font-size: 16px;
-			font-weight: 700;
-			text-transform: uppercase;
-			transition: all 0.3s ease;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-		}
-		.btn:hover, .btn:active {
-			background-color: rgba(223,0,125,1);
-			color: #fff;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-			transform: scale(1.1);
-			cursor: pointer;
-		}        
-
-		.log-in-btn {
-			text-decoration: none;
-			background-color: rgba(223,0,125,0.8);
-			color: #fff;
-			padding: 5px 10px;
-			border-radius: 9px;
-			font-size: 10px;
-			font-weight: 700;
-			text-transform: uppercase;
-			transition: all 0.3s ease;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-		}
-		.log-in-btn:hover, .log-in-btn:active {
-			background-color: rgba(223,0,125,1);
-			color: #fff;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-			transform: scale(1.1);
-			cursor: pointer;
-		}
-
-		.overlay {
-			position: absolute;
-			display: none;
-			height: 200%;
-			width: 100%;
-			justify-content: center;
-			align-items: center;
-			z-index: 2000;
-			backdrop-filter: blur(5px);
-			background-color: rgba(0,0,0,0);
-		}
-
-		.field_set {
-			position: absolute;
-			font-size: 17px;
-			z-index: 2000;
-			border: 2px solid #000;
-			background-color: rgba(234,159,198,0.2);
-			padding: 20px;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-			text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
-			backdrop-filter: blur(5px);
-			font-weight: 700;
-		}  
-
-		article {
-			width: 80%;
-			margin: 40px auto;
-			padding: 20px;
-			border-radius: 10px;
-			text-align: center;
-		}
-
-		.card {
-			width: 40%;
-			margin: 20px auto;
-			padding: 10px;
-			background-color: #fff;
-			border: 1px solid #ddd;
-			border-radius: 10px;
-			box-shadow: 0 0 10px rgba(223,0,125,0.3);
-			transition: transform 0.2s ease-in-out;
-		}
-
-		.card:hover {
-			transform: scale(1.1);
-		}
-
-		.card h2 {
-			font-size: 18px;
-		}
-
-		.card p {
-			font-size: 14px;
-		}
-
-		.welcome-message {
-			display: flex;
-			align-items: center;
-			gap: 20px;
-			font-size: 18px;
-			font-weight: 700;
-		}
-
-		.play-btn {
-			text-decoration: none;
-			background-color: rgba(223,0,125,0.3);
-			color: #fff;
-			padding: 10px 20px;
-			border-radius: 9px;
-			font-size: 16px;
-			font-weight: 700;
-			text-transform: uppercase;
-			transition: all 0.3s ease;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-		}
-
-		.play-btn:hover {
-			background-color: rgba(223,0,125,1);
-			color: #fff;
-			box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-			transform: scale(1.1);
-			cursor: pointer;
-		}
-
-	</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Pairs</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #FFF6DA;
+            overflow-y: auto;
+            font-family: 'Exo 2', sans-serif !important;
+        }
+        .header {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #DFD0B8;
+            padding: 10px 20px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .container-1 {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .logo img {
+            max-height: 50px;
+            width: auto;
+            padding-left: 30px;
+        }
+        .overlay {
+            position: absolute;
+            display: none;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .field_set {
+            position: absolute;
+            font-size: 17px;
+            z-index: 2000;
+            border: 2px solid #000;
+            background-color: rgba(234,159,198,0.2);
+            padding: 20px;
+            box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+            text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
+            backdrop-filter: blur(5px);
+            font-weight: 700;
+            width: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            color: red;
+        }
+        /* Style for the login and difficulty overlay buttons */
+        .log-in-btn, .btn {
+            background-color: rgba(223,0,125,0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9px;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .log-in-btn:hover, .btn:hover {
+            background-color: rgba(223,0,125,1);
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 
 <!-- Overlay for the login form -->
-<div class="overlay" id="overlay" style="display: none;">
-	<form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
-		<legend id="login-legend">ENTER USERNAME</legend>
-		<br>
-		<label for="username">USERNAME: </label>
-		<input type="text" id="username" name="username" required>
-		<br><br>
-		<input type="reset" class="log-in-btn" value="RESET">
-		<input type="submit" class="log-in-btn" value="SUBMIT">
-	</form>
+<div class="overlay" id="overlay">
+    <form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
+        <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
+        <legend id="login-legend">ENTER USERNAME</legend>
+        <br>
+        <label for="username">USERNAME: </label>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <input type="reset" class="log-in-btn" value="RESET">
+        <input type="submit" class="log-in-btn" value="SUBMIT">
+    </form>
 </div>
 
 <!-- Overlay for the difficulty level pop-up -->
 <div class="overlay" id="difficulty-overlay">
-	<div class="field_set">
-		<h2>Choose Difficulty Level</h2>
-		<button class="btn" onclick="window.location.href='easy.html';">Easy</button>
-		<button class="btn" onclick="window.location.href='hard.html';">Hard</button>
-	</div>
+    <div class="field_set">
+        <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
+        <h2>Choose Difficulty Level</h2>
+        <button class="btn" onclick="window.location.href='easy.html';">Easy</button>
+        <button class="btn" onclick="window.location.href='hard.html';">Hard</button>
+    </div>
 </div>
 
 <!-- Header -->
 <header class="header">
-	<div class="container-1">
-		<a href="/" class="logo">
-			<img src="images/icon.jpg" alt="Logo">
-		</a>
-		<nav class="nav">
-			<ul class="nav-list">
-				<li><a href="index.html">Home</a></li>
-				<li><a id="nav-active" href="xyz.html">LEADERBOARD</a></li>
-				<li><a href="about.html">About</a></li>
-				<li><a href="contact.html">Contact</a></li>
-			</ul>
-		</nav>
-		<div class="actions">
-			<button id="login-btn" class="log-in-btn" onclick="showLoginForm()">ENTER USERNAME</button>
-			<span id="welcome-message" class="welcome-message"></span>
-			<button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">PLAY</button>
-		</div>
-	</div>
+    <div class="container-1">
+        <a href="/" class="logo">
+            <img src="images/icon.jpg" alt="Logo">
+        </a>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a id="nav-active" href="xyz.html">LEADERBOARD</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="actions">
+            <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">ENTER USERNAME</button>
+            <span id="welcome-message" class="welcome-message"></span>
+            <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">PLAY</button>
+        </div>
+    </div>
 </header>
 
-<!-- Game Rules Cards -->
-<section>
-			<article>
-				<div class="card">
-					<h2>Mechanics and Win Conditions</h2>
-					<p><strong>Card Flip Mechanic:</strong> Players flip cards to reveal pictures or scientists and inventions.</p>
-					<p><strong>Matching Mechanic:</strong> Players match identical pictures or scientists with their corresponding inventions.</p>
-					<p><strong>Time Limit Mechanic:</strong> The game ends when the time limit is reached.</p>
-				</div>
-
-				<div class="card">
-					<h2>Win Condition</h2>
-					<p><strong>Easy Version:</strong> Find all matching pairs before time runs out.</p>
-					<p><strong>Hard Version:</strong> Achieve a high score without reaching the Game Over Threshold.</p>
-				</div>
-
-				<div class="card">
-					<h2>Game Over Threshold</h2>
-					<p><strong>Easy Version:</strong> Not applicable.</p>
-					<p><strong>Hard Version:</strong> Game ends if the player's score reaches -20 or they correctly match all pairs.</p>
-				</div>
-
-				<div class="card">
-					<h2>Rules and Constraints</h2>
-					<p><strong>Card Selection:</strong> Players can only select two cards at a time.</p>
-					<p><strong>Matching Rules:</strong> Pictures or scientists and inventions must match exactly.</p>
-					<p><strong>Time Limit:</strong> The game has a set time limit.</p>
-				</div>
-
-				<div class="card">
-					<h2>Scoring System</h2>
-					<p><strong>Correct Match:</strong> +10 points</p>
-					<p><strong>Incorrect Match:</strong> -2 points</p>
-					<p><strong>Combo Bonus:</strong> +15 points for every 3 correct matches in a row</p>
-				</div>
-			</article>
-		</section>
-
-<!-- Script for login and difficulty overlay logic -->
 <script>
-	// Function to handle form submission
-	function onLoginSubmit() {
-		let username = document.getElementById("username").value;
-		let password = document.getElementById("password").value;
+    // Function to handle form submission
+    function onLoginSubmit() {
+        let username = document.getElementById("username").value;
 
-		// Validate username (only letters and numbers allowed)
-		if (!/^[a-zA-Z0-9]+$/.test(username)) {
-			alert("Username can only contain letters and numbers.");
-			return false;
-		}
+        // Validate username (only letters and numbers allowed)
+        if (!/^[a-zA-Z0-9]+$/.test(username)) {
+            alert("Username can only contain letters and numbers.");
+            return false;
+        }
 
-		// Store username and password in local storage
-		localStorage.setItem("username", username);
-		localStorage.setItem("password", password);
+        // Store username and display the welcome message
+        localStorage.setItem("username", username);
+        document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
 
-		// Display a welcome message
-		document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
+        // Hide the login form (overlay) and show play button
+        closePopup('overlay');
+        document.getElementById("play-btn").style.display = "inline-block";
+        document.getElementById("login-btn").style.display = "none";
 
-		// Hide the login form (overlay)
-		document.getElementById("overlay").style.display = "none";
+        return false; // Prevent form from reloading the page
+    }
 
-		// Show the play button
-		document.getElementById("play-btn").style.display = "inline-block";
+    // Function to show the login form when the "Log in" button is clicked
+    function showLoginForm() {
+        document.getElementById("overlay").style.display = "flex";
+    }
 
-		// Change the button text to "Play"
-		document.getElementById("login-btn").style.display = "none";
+    // Function to show the difficulty level overlay when the "Play" button is clicked
+    function showDifficultyOverlay() {
+        document.getElementById("difficulty-overlay").style.display = "flex";
+    }
 
-		return false; // Prevent form from reloading the page
-	}
+    // Function to close any popup
+    function closePopup(popupId) {
+        document.getElementById(popupId).style.display = "none";
+    }
 
-	// Function to show the login form when the "Log in" button is clicked
-	function showLoginForm() {
-		document.getElementById("overlay").style.display = "flex";
-	}
+    // Check if the user is already logged in and display the "Play" button
+    window.onload = function() {
+        let savedUsername = localStorage.getItem("username");
 
-	// Function to show the difficulty level overlay when the "Play" button is clicked
-	function showDifficultyOverlay() {
-		document.getElementById("difficulty-overlay").style.display = "flex";
-	}
-
-	// Check if the user is already logged in and display the "Play" button
-	window.onload = function() {
-		let savedUsername = localStorage.getItem("username");
-
-		if (savedUsername) {
-			document.getElementById("welcome-message").innerText = `Welcome, ${savedUsername}!`;
-
-			document.getElementById("play-btn").style.display = "inline-block";
-			document.getElementById("login-btn").style.display = "none";
-		}
-	};
+        if (savedUsername) {
+            document.getElementById("welcome-message").innerText = `Welcome, ${savedUsername}!`;
+            document.getElementById("play-btn").style.display = "inline-block";
+            document.getElementById("login-btn").style.display = "none";
+        }
+    };
 </script>
 
 </body>
