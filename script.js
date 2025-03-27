@@ -1,41 +1,41 @@
-   // Function to handle form submission
+   // handles form submission
     function onLoginSubmit() {
         let username = document.getElementById("username").value;
 
-        // Validate username (only letters and numbers allowed)
+        // validates username so that only letters and numbers are allowed
         if (!/^[a-zA-Z0-9]+$/.test(username)) {
             alert("Username can only contain letters and numbers.");
             return false;
         }
 
-        // Store username and display the welcome message
+        // stores username and displays the welcome message
         localStorage.setItem("username", username);
         document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
 
-        // Hide the login form (overlay) and show play button
+        // hides the login form (overlay) and show play button
         closePopup('overlay');
         document.getElementById("play-btn").style.display = "inline-block";
         document.getElementById("login-btn").style.display = "none";
 
-        return false; // Prevent form from reloading the page
+        return false; // prevents form from reloading the page
     }
 
-    // Function to show the login form when the "Log in" button is clicked
+    // shows the login form when the "log in" button is clicked
     function showLoginForm() {
         document.getElementById("overlay").style.display = "flex";
     }
 
-    // Function to show the difficulty level overlay when the "Play" button is clicked
+    // shows the difficulty level overlay when the "pklay" button is clicked
     function showDifficultyOverlay() {
         document.getElementById("difficulty-overlay").style.display = "flex";
     }
 
-    // Function to close any popup
+    // closes pop ups
     function closePopup(popupId) {
         document.getElementById(popupId).style.display = "none";
     }
 
-    // Check if the user is already logged in and display the "Play" button
+    // checks if the user is already logged in and displays the "play" button
     window.onload = function() {
         let savedUsername = localStorage.getItem("username");
 
