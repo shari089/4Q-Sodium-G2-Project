@@ -8,7 +8,7 @@
             return false;
         }
 
-        // stores username and displays the welcome message
+        // stores username and displays the welcome message; notes: use session storage for username, localstorage for score
         localStorage.setItem("username", username);
         document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
 
