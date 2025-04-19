@@ -26,6 +26,10 @@ function showLoginForm() {
   document.getElementById("overlay").style.display = "flex";
 }
 
+function howToPlay() {
+  document.getElementById("how-to-play-overlay").style.display = "flex";
+}
+
 // shows the difficulty level overlay when the "play" button is clicked
 function showDifficultyOverlay() {
   document.getElementById("difficulty-overlay").style.display = "flex";
