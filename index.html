@@ -53,29 +53,31 @@
       </div>
     </header>
     
-    <!-- Game Rules -->
-    <section>
-      <article>
-        <div class="card"><h2>Objectives</h2><p>Find all matching pairs of cards within the given time limit.</p></div>
-        <div class="card"><h2>Difficulty Levels</h2>
-          <p><strong>Easy Version:</strong> Picture Matching.</p>
-          <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
-        </div>
-        <div class="card"><h2>How to Play</h2>
-          <p>Flip two cards and match identical ones or scientist-invention pairs within the time-limit.</p>
-        </div>
-        <div class="card"><h2>Rules and Constraints</h2>
-          <p><strong>Card Selection:</strong> Two at a time.</p>
-          <p><strong>Matching:</strong> Must be exact.</p>
-          <p><strong>Time Limit:</strong> Set per level.</p>
-        </div>
-        <div class="card"><h2>Scoring System</h2>
-          <p><strong>Correct:</strong> +10 points</p>
-          <p><strong>Incorrect:</strong> -2 points</p>
-          <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
-        </div>
-        <div class="card"><h2>Player Count</h2><p><strong>Single-Player:</strong> Designed for one.</p></div>
-      </article>
-    </section>
+      <div class="how-to-playoverlay" id="overlay">
+        <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
+        <section>
+          <article>
+            <div class="card"><h2>Objectives</h2><p>Find all matching pairs of cards within the given time limit.</p></div>
+            <div class="card"><h2>Difficulty Levels</h2>
+              <p><strong>Easy Version:</strong> Picture Matching.</p>
+              <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
+            </div>
+            <div class="card"><h2>How to Play</h2>
+              <p>Flip two cards and match identical ones or scientist-invention pairs within the time-limit.</p>
+            </div>
+            <div class="card"><h2>Rules and Constraints</h2>
+              <p><strong>Card Selection:</strong> Two at a time.</p>
+              <p><strong>Matching:</strong> Must be exact.</p>
+              <p><strong>Time Limit:</strong> Set per level.</p>
+            </div>
+            <div class="card"><h2>Scoring System</h2>
+              <p><strong>Correct:</strong> +10 points</p>
+              <p><strong>Incorrect:</strong> -2 points</p>
+              <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
+            </div>
+            <div class="card"><h2>Player Count</h2><p><strong>Single-Player:</strong> Designed for one.</p></div>
+          </article>
+        </section>
+      </div>
   </body>
 </html>
