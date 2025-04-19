@@ -12,10 +12,14 @@ function onLoginSubmit() {
   localStorage.setItem("username", username);
   document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
 
-  closePopup('overlay');
-  document.getElementById("play-btn").style.display = "inline-block";
-  document.getElementById("login-btn").style.display = "none";
+  // change button text to "Change Username"
+  const loginBtn = document.getElementById("login-btn");
+  loginBtn.innerText = "Change Username";
 
+  // always keep play button visible
+  document.getElementById("play-btn").style.display = "inline-block";
+
+  closePopup('overlay');
   return false;
 }
 
@@ -38,8 +42,8 @@ window.onload = function () {
   let savedUsername = localStorage.getItem("username");
   if (savedUsername) {
     document.getElementById("welcome-message").innerText = `Welcome, ${savedUsername}!`;
+    document.getElementById("login-btn").innerText = "Change Username";
     document.getElementById("play-btn").style.display = "inline-block";
-    document.getElementById("login-btn").style.display = "none";
   }
 };
 
