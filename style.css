@@ -24,7 +24,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.1); /* lighter for better effect */
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   padding: 10px 20px 5px;
   z-index: 1000;
