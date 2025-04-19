@@ -172,7 +172,7 @@ body {
 
 .play-btn {
     background-color: rgba(204, 127, 134,1);
-    color: rgba(33, 46, 100, 1);
+    color: white;
     padding: 10px 20px;
     margin-left: 10px;
     border-radius: 9px;
