@@ -58,7 +58,7 @@ body {
 
 .nav-list a {
     text-decoration: none;
-    color: #3C5B6F;
+    color: rgba(33, 46, 100, 1);
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
