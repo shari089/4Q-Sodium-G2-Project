@@ -2,27 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Picture Pairs</title>
-    <link rel="stylesheet" href="style.css"/>
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
   </head>
   <body>
-    <!-- Overlay for the login form -->
+    <!-- Login Overlay -->
     <div class="overlay" id="overlay">
       <form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
         <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
-        <legend id="login-legend">Enter Username</legend>
-        <br />
-        <label for="username">Username: </label>
-        <input type="text" id="username" name="username" required />
-        <br /><br />
-        <input type="reset" class="log-in-btn" value="RESET" />
-        <input type="submit" class="log-in-btn" value="SUBMIT" />
+        <legend id="login-legend">Enter Username</legend><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <input type="reset" class="log-in-btn" value="RESET">
+        <input type="submit" class="log-in-btn" value="SUBMIT">
       </form>
     </div>
     
-    <!-- Overlay for the difficulty level pop-up -->
+    <!-- Difficulty Overlay -->
     <div class="overlay" id="difficulty-overlay">
       <div class="field_set">
         <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
@@ -36,62 +35,46 @@
     <header class="header">
       <div class="container-1">
         <a href="/" class="logo">
-          <img src="images/icon.jpg" alt="Logo" />
+          <img src="images/icon.jpg" alt="Logo">
         </a>
         <nav class="nav">
           <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a id="nav-active" href="xyz.html">LEADERBOARD</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="xyz.html" class="nav-link">Leaderboard</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="contact.html" class="nav-link">How to Play</a></li>
           </ul>
         </nav>
         <div class="actions">
-          <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">ENTER USERNAME</button>
+          <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Enter Username</button>
           <span id="welcome-message" class="welcome-message"></span>
-          <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">PLAY</button>
+          <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
         </div>
       </div>
     </header>
     
-    <!-- Game Rules Cards -->
+    <!-- Game Rules -->
     <section>
       <article>
-        <div class="card">
-          <h2>Objectives</h2>
-          <p>Find all matching pairs of cards within the given time limit.</p>
+        <div class="card"><h2>Objectives</h2><p>Find all matching pairs of cards within the given time limit.</p></div>
+        <div class="card"><h2>Difficulty Levels</h2>
+          <p><strong>Easy Version:</strong> Picture Matching.</p>
+          <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
         </div>
-    
-        <div class="card">
-          <h2>Difficulty Levels</h2>
-          <p><strong>Easy Version:</strong> Find all matching pairs before the time-limit runs out. Picture Matching.</p>
-          <p><strong>Hard Version:</strong> Achieve a high score without reaching the Game-Over Threshold (-20 points). Scientist-invention matching.</p>
+        <div class="card"><h2>How to Play</h2>
+          <p>Flip two cards and match identical ones or scientist-invention pairs within the time-limit.</p>
         </div>
-    
-        <div class="card">
-          <h2>How to Play</h2>
-          <p>Flip two cards.</p>
-          <p>Match pictures that are identical, or match scientists with their corresponding inventions within the time-limit.</p>
+        <div class="card"><h2>Rules and Constraints</h2>
+          <p><strong>Card Selection:</strong> Two at a time.</p>
+          <p><strong>Matching:</strong> Must be exact.</p>
+          <p><strong>Time Limit:</strong> Set per level.</p>
         </div>
-    
-        <div class="card">
-          <h2>Rules and Constraints</h2>
-          <p><strong>Card Selection:</strong> Players can only select two cards at a time.</p>
-          <p><strong>Matching Rules:</strong> Pictures or scientists and inventions must match exactly.</p>
-          <p><strong>Time Limit:</strong> The game has a set time-limit</p>
+        <div class="card"><h2>Scoring System</h2>
+          <p><strong>Correct:</strong> +10 points</p>
+          <p><strong>Incorrect:</strong> -2 points</p>
+          <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
         </div>
-    
-        <div class="card">
-          <h2>Scoring System</h2>
-          <p><strong>Correct Match:</strong> +10 points</p>
-          <p><strong>Incorrect Match:</strong> -2 points</p>
-          <p><strong>Combo Bonus:</strong> +15 points for every 3 correct matches in a row</p>
-        </div>
-    
-        <div class="card">
-          <h2>Player count</h2>
-          <p><strong>Single-Player:</strong> Designed for one</p>
-        </div>
+        <div class="card"><h2>Player Count</h2><p><strong>Single-Player:</strong> Designed for one.</p></div>
       </article>
     </section>
   </body>
