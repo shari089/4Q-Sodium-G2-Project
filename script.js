@@ -46,3 +46,11 @@ window.onload = function () {
     document.getElementById("login-btn").style.display = "none";
   }
 }
+
+document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', function () {
+        document.querySelectorAll('.nav-list a').forEach(el => el.classList.remove('active'));
+        this.classList.add('active');
+    })
+})
+
