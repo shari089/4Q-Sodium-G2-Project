@@ -62,28 +62,15 @@ body {
 	transition: width 0.3s ease;
 	border-radius: 5px;
 }
-.nav-list a:hover::after, .nav-list a:active::after {
+
+.nav-list a.active {
+	color: #153448;
+}
+
+.nav-list a:hover::after, .nav-list a.active::after {
 	width: 100%;
 	background-color: #153448;
-}
-.nav-list a:hover, #nav-active:hover{
-	color: #153448;
-}
-.nav-list a:active, #nav-active:active{
-	color: #153448;
-}
-#nav-active {
-	text-decoration: none;
-	color: #153448;
-	font-size: 20px;
-	font-weight: 700;
-	font-family: 'Exo 2', sans-serif !important;
-	text-transform: uppercase;
-	padding: 15px 10px;
-	letter-spacing: 2px;
-	position: relative;
-	transition: color 0.2s ease;
-}
+
 .overlay {
     position: absolute;
     display: none;
