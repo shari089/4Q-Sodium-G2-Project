@@ -173,6 +173,8 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+  width: 100%;
+  height: calc(100vh - 150px);
 }
 
 section {
