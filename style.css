@@ -135,7 +135,7 @@ body {
 }
 
 .log-in-btn, .btn {
-    background-color: rgba(223,0,125,0.8);
+    background-color: rgba(234,159,198,0.2);
     color: white;
     padding: 10px 20px;
     border-radius: 9px;
@@ -147,12 +147,12 @@ body {
     transition: all 0.3s ease;
 }
 .log-in-btn:hover, .btn:hover {
-    background-color: rgba(223,0,125,1);
+    background-color: rgba(234,159,198,0.6);
     transform: scale(1.1);
 }
 
 .play-btn {
-    background-color: rgba(0, 153, 0, 0.8);
+    background-color: rgba(234,159,198,0.2);
     color: white;
     padding: 10px 20px;
     margin-left: 10px;
@@ -164,7 +164,7 @@ body {
     transition: all 0.3s ease;
 }
 .play-btn:hover {
-    background-color: rgba(0, 153, 0, 1);
+    background-color: rgba(234,159,198,0.6);
     transform: scale(1.1);
 }
 
