@@ -85,6 +85,18 @@ body {
     z-index: 3000;
     background-color: rgba(0, 0, 0, 0);
 }
+
+.how-to-play-overlay {
+    position: absolute;
+    display: none;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+    background-color: rgba(0, 0, 0, 0);
+}
+
 .field_set {
     position: absolute;
     font-size: 17px;
