@@ -104,9 +104,10 @@ body {
  .field-set {
      position: absolute;
      font-size: 17px;
+     color: white;
      z-index: 2000;
      border: 2px solid #000;
-     background-color: rgba(234,159,198,0.2);
+     background-color: (0,0,0,0.1)
      padding: 20px;
      border-radius: 9px;
      box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
@@ -122,9 +123,10 @@ body {
 .howToPlay-field-set {
     position: absolute;
     font-size: 17px;
+    color: white;
     z-index: 2000;
     border: 2px solid #000;
-    background-color: rgba(234,159,198,0.2);
+    background-color: rgba(0,0,0,0.1);
     padding: 20px;
     border-radius: 9px;
     box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
