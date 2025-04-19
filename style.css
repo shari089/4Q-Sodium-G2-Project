@@ -168,49 +168,38 @@ body {
     transform: scale(1.1);
 }
 
-/* Game Rules Section */
-.card {
-    width: 40%;
-    margin: 20px auto;
-    padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(223,0,125,0.3);
-    transition: transform 0.2s ease-in-out;
-}
-.card:hover {
-    transform: scale(1.1);
-}
-.card h2 {
-    font-size: 18px;
-}
-.card p {
-    font-size: 14px;
-}
-
 section {
     padding: 40px 20px;
 }
 
-.r-1.card,
-.r-2.card {
+/* ROW LAYOUT - applies to r-1 and r-2 */
+.r-1,
+.r-2 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-  width: 100%;
-  padding: 10px 0;
-  box-sizing: border-box;
-  margin-buttom: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
 }
 
-
-.r-1.card > div,
-.r-2.card > div {
-  background-color: rgba(0,0,0,0);
+/* CARD STYLE - for individual info boxes */
+.card {
+  background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 6px;
-  padding: 10px;
-  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(223, 0, 125, 0.3);
+  padding: 20px;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card h2 {
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
 }
