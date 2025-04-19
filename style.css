@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgba(33, 46, 100, 1);
   height: 100%;
   font-family: 'Exo 2', sans-serif !important;
   overflow-x: hidden;
@@ -9,8 +10,8 @@ body {
 
 .background-video {
   position: fixed;
-  top: 0;
-  left: 0;
+  top-margin: 30px;
+  left-margin: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
