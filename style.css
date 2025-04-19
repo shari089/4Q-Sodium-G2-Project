@@ -1,251 +1,58 @@
-/* GENERAL STYLES */
-body {
-    margin: 0;
-    font-family: 'Rajdhani', sans-serif;
-    background-color: #0f1923;
-    overflow-y: auto;
+/* Shared Neon Glow Button Styles */
+.btn-login, .btn-play, .btn-ld, .btn-htp, .btn-contact, .log-in-btn, .btn {
+    background-color: rgba(20, 20, 20, 0.5); /* Semi-transparent dark for contrast */
     color: #ffffff;
+    padding: 12px 28px;
+    border: 2px solid #0ff; /* Cyan glow border */
+    border-radius: 8px;
+    font-weight: 900;
+    font-size: 18px;
+    text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, inset 0 0 5px #0ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 240px;
+    text-align: center;
 }
 
-video {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -100;
-    object-fit: cover;
+/* Hover effects for all neon buttons */
+.btn-login:hover, .btn-play:hover, .btn-ld:hover, .btn-htp:hover, .btn-contact:hover, .log-in-btn:hover, .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #0ff, 0 0 25px #0ff, inset 0 0 8px #0ff;
+    background-color: rgba(30, 30, 30, 0.6);
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, #0f1923 0%, transparent 10%, transparent 90%, #0f1923 100%);
-    z-index: -99;
-}
+/* Optional: Individual button colors (Valorant palette) */
+.btn-login { border-color: #ff4655; box-shadow: 0 0 10px #ff4655, 0 0 20px #ff4655, inset 0 0 5px #ff4655; }
+.btn-login:hover { box-shadow: 0 0 15px #ff4655, 0 0 25px #ff4655, inset 0 0 8px #ff4655; }
 
-/* CONTAINER */
+.btn-play { border-color: #00f9ff; }
+.btn-ld { border-color: #ff9e00; }
+.btn-htp { border-color: #ff2cbe; }
+.btn-contact { border-color: #8bff2c; }
+
+/* More Professional Button Layout */
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin-top: 100px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
     position: relative;
+    margin-top: 250px;
 }
 
-/* WELCOME MESSAGE */
+.btn-login, .btn-play, .btn-ld, .btn-htp, .btn-contact {
+    position: static; /* removes skewed/rotated/random layout */
+    transform: none;
+}
+
+/* Optional: center welcome message properly */
 .welcome-message {
-    position: absolute;
-    top: 30px;
+    top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: #0f1923;
-    background-color: #ff4655;
-    padding: 12px 24px;
-    border-radius: 12px;
-    font-size: 20px;
-    font-weight: bold;
-    z-index: 1000;
-    box-shadow: 0 0 10px #ff4655aa;
-}
-
-/* BUTTON BASE STYLE */
-button {
-    font-family: 'Rajdhani', sans-serif;
-}
-
-.btn-login,
-.btn-play,
-.btn-ld,
-.btn-htp,
-.btn-contact {
-    padding: 14px 32px;
-    font-size: 22px;
-    font-weight: 800;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 220px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    letter-spacing: 1px;
-}
-
-/* INDIVIDUAL BUTTON COLORS */
-.btn-login {
-    background-color: #00ffae;
-    color: #0f1923;
-    position: relative;
-    top: 60px;
-    transform: rotate(5deg);
-    right: 300px;
-}
-.btn-login:hover {
-    background-color: #00d99e;
-    transform: scale(1.1);
-}
-
-.btn-play {
-    background-color: #ff4655;
-    color: white;
-    position: relative;
-    top: 260px;
-}
-.btn-play:hover {
-    background-color: #e03b4c;
-    transform: scale(1.1);
-}
-
-.btn-ld {
-    background-color: #ff8f1f;
-    color: #0f1923;
-    position: relative;
-    transform: rotate(-5deg);
-    right: 300px;
-    top: 150px;
-}
-.btn-ld:hover {
-    background-color: #e87f1b;
-    transform: scale(1.1);
-}
-
-.btn-htp {
-    background-color: #4f56ff;
-    color: white;
-    position: relative;
-    transform: rotate(5deg);
-    left: 280px;
-    top: 180px;
-}
-.btn-htp:hover {
-    background-color: #3c44d6;
-    transform: scale(1.1);
-}
-
-.btn-contact {
-    background-color: #f7e85d;
-    color: #0f1923;
-    position: relative;
-    transform: rotate(-5deg);
-    left: 280px;
-    bottom: 120px;
-}
-.btn-contact:hover {
-    background-color: #e5d34a;
-    transform: scale(1.1);
-}
-
-/* OVERLAY STYLES */
-.overlay {
-    position: fixed;
-    display: none;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    z-index: 3000;
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-/* POPUP FORM */
-.field_set {
-    position: absolute;
-    font-size: 18px;
-    border: 2px solid #ff4655;
-    background-color: #1e2a38;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 70, 85, 0.5);
-    text-shadow: none;
-    font-weight: 700;
-    width: 320px;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #ffffff;
-}
-
-/* CLOSE BUTTON */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ff4655;
-    cursor: pointer;
-}
-.close-btn:hover {
-    color: #ffffff;
-}
-
-/* FORM BUTTONS */
-.log-in-btn, .btn {
-    background-color: #ff4655;
-    color: white;
-    padding: 12px 22px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
-}
-.log-in-btn:hover, .btn:hover {
-    background-color: #e03b4c;
-    transform: scale(1.05);
-}
-
-/* CARD STYLE */
-.card {
-    width: 60%;
-    margin: 30px auto;
-    padding: 20px;
-    background-color: #1e2a38;
-    border: 2px solid #ff4655;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 70, 85, 0.3);
-    transition: transform 0.3s ease-in-out;
-}
-.card:hover {
-    transform: scale(1.05);
-}
-.card h2 {
-    font-size: 20px;
-    color: #ff4655;
-}
-.card p {
-    font-size: 16px;
-    color: #dddddd;
-}
-
-/* SECTION STYLE */
-section {
-    padding: 40px 20px;
-}
-
-/* PLAY BUTTON CLASS */
-.play-btn {
-    background-color: #00ffae;
-    color: #0f1923;
-    padding: 10px 20px;
-    margin-left: 10px;
-    border-radius: 9px;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    transform: rotate(0deg);
-}
-.play-btn:hover {
-    background-color: #00d99e;
-    transform: scale(1.1);
+    color: #0ff;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid #0ff;
+    box-shadow: 0 0 10px #0ff, 0 0 20px #0ff;
 }
