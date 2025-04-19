@@ -1,85 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Picture Pairs</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Picture Pairs</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
 
-  </head>
-  <body>
-    <!-- Login Overlay -->
-    <div class="overlay" id="overlay">
-      <form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
-        <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
-        <legend id="login-legend">Enter Username</legend><br>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br><br>
-        <input type="reset" class="log-in-btn" value="RESET">
-        <input type="submit" class="log-in-btn" value="SUBMIT">
-      </form>
+  <!-- Login Overlay -->
+  <div class="overlay" id="overlay">
+    <form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
+      <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
+      <legend id="login-legend">Enter Username</legend><br>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br><br>
+      <input type="reset" class="log-in-btn" value="RESET">
+      <input type="submit" class="log-in-btn" value="SUBMIT">
+    </form>
+  </div>
+
+  <!-- Difficulty Overlay -->
+  <div class="overlay" id="difficulty-overlay">
+    <div class="field_set">
+      <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
+      <h2>Choose Difficulty Level</h2>
+      <button class="btn" onclick="window.location.href='easy.html';">Easy</button>
+      <button class="btn" onclick="window.location.href='hard.html';">Hard</button>
     </div>
-    
-    <!-- Difficulty Overlay -->
-    <div class="overlay" id="difficulty-overlay">
-      <div class="field_set">
-        <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
-        <h2>Choose Difficulty Level</h2>
-        <button class="btn" onclick="window.location.href='easy.html';">Easy</button>
-        <button class="btn" onclick="window.location.href='hard.html';">Hard</button>
+  </div>
+
+  <!-- How to Play Overlay -->
+  <div class="overlay" id="how-to-play-overlay">
+    <div class="field_set">
+      <button type="button" class="close-btn" onclick="closePopup('how-to-play-overlay')">X</button>
+      <section>
+        <article>
+          <div class="card"><h2>Objectives</h2><p>Find all matching pairs of cards within the given time limit.</p></div>
+          <div class="card"><h2>Difficulty Levels</h2>
+            <p><strong>Easy Version:</strong> Picture Matching.</p>
+            <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
+          </div>
+          <div class="card"><h2>How to Play</h2>
+            <p>Flip two cards and match identical ones or scientist-invention pairs within the time-limit.</p>
+          </div>
+          <div class="card"><h2>Rules and Constraints</h2>
+            <p><strong>Card Selection:</strong> Two at a time.</p>
+            <p><strong>Matching:</strong> Must be exact.</p>
+            <p><strong>Time Limit:</strong> Set per level.</p>
+          </div>
+          <div class="card"><h2>Scoring System</h2>
+            <p><strong>Correct:</strong> +10 points</p>
+            <p><strong>Incorrect:</strong> -2 points</p>
+            <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
+          </div>
+          <div class="card"><h2>Player Count</h2><p><strong>Single-Player:</strong> Designed for one.</p></div>
+        </article>
+      </section>
+    </div>
+  </div>
+
+  <!-- Header / Nav -->
+  <header class="header">
+    <div class="container-1">
+      <a href="index.html" class="logo">
+        <img src="images/icon.jpg" alt="Logo">
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
+        </ul>
+      </nav>
+      <div class="actions">
+        <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Enter Username</button>
+        <span id="welcome-message" class="welcome-message"></span>
+        <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
       </div>
     </div>
-    
-    <!-- Header -->
-    <header class="header">
-      <div class="container-1">
-        <a href="/" class="logo">
-          <img src="images/icon.jpg" alt="Logo">
-        </a>
-        <nav class="nav">
-          <ul class="nav-list">
-            <li><a href="#" class="nav-link">Home</a></li>
-            <li><a href="leaderboard.html" class="nav-link">Leaderboard</a></li>
-            <li><a href="about()" class="nav-link">About</a></li>
-            <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
-          </ul>
-        </nav>
-        <div class="actions">
-          <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Enter Username</button>
-          <span id="welcome-message" class="welcome-message"></span>
-          <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
-        </div>
-      </div>
-    </header>
-    
-      <div class="how-to-play-overlay" id="overlay">
-        <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
-        <div class="field_set">
-          <section>
-            <article>
-              <div class="card"><h2>Objectives</h2><p>Find all matching pairs of cards within the given time limit.</p></div>
-              <div class="card"><h2>Difficulty Levels</h2>
-                <p><strong>Easy Version:</strong> Picture Matching.</p>
-                <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
-              </div>
-              <div class="card"><h2>How to Play</h2>
-                <p>Flip two cards and match identical ones or scientist-invention pairs within the time-limit.</p>
-              </div>
-              <div class="card"><h2>Rules and Constraints</h2>
-                <p><strong>Card Selection:</strong> Two at a time.</p>
-                <p><strong>Matching:</strong> Must be exact.</p>
-                <p><strong>Time Limit:</strong> Set per level.</p>
-              </div>
-              <div class="card"><h2>Scoring System</h2>
-                <p><strong>Correct:</strong> +10 points</p>
-                <p><strong>Incorrect:</strong> -2 points</p>
-                <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
-              </div>
-              <div class="card"><h2>Player Count</h2><p><strong>Single-Player:</strong> Designed for one.</p></div>
-            </article>
-          </section>
-        </div>
-      </div>
-  </body>
+  </header>
+
+  <!-- Your JS last so DOM is ready -->
+  <script src="script.js"></script>
+</body>
 </html>
