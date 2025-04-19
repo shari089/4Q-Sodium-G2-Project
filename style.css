@@ -184,7 +184,9 @@ section {
   width: 100%;
   padding: 10px 0;
   box-sizing: border-box;
+  margin-buttom: 20px;
 }
+
 
 .r-1.card > div,
 .r-2.card > div {
