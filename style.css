@@ -81,7 +81,7 @@ body {
     justify-content: center;
     align-items: center;
     z-index: 3000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .field-set {
@@ -89,7 +89,7 @@ body {
     font-size: 17px;
     z-index: 2000;
     border: 2px solid #000;
-    background-color: rgba(234,159,198,0);
+    background-color: rgba(234,159,198,0.2);
     padding: 20px;
     border-radius: 9px;
     box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
@@ -107,7 +107,7 @@ body {
     font-size: 17px;
     z-index: 2000;
     border: 2px solid #000;
-    background-color: rgba(234,159,198,0);
+    background-color: rgba(234,159,198,0.2);
     padding: 20px;
     border-radius: 9px;
     box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
