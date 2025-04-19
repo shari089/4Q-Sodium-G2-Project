@@ -176,34 +176,22 @@ section {
     padding: 40px 20px;
 }
 
-/* Score row: two items, side by side */
-#r-0.score {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  box-sizing: border-box;
-}
-
-/* Make row‑1 and row‑2 full‑width grids of boxes */
 .r-1.card,
 .r-2.card {
   display: grid;
-  /* try 5 per row; adjusts automatically on narrower screens */
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 10px;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 0;
   box-sizing: border-box;
 }
 
 .r-1.card > div,
 .r-2.card > div {
-  background-color: #fff;
+  background: #fff;
   border: 1px solid #ddd;
   border-radius: 6px;
-  height: auto;          
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10px;
   box-sizing: border-box;
+  text-align: center;
 }
