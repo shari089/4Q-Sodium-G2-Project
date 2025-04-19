@@ -18,7 +18,6 @@ body {
   pointer-events: none;
 }
 
-
 .header {
   position: fixed;
   top: 0;
@@ -152,8 +151,8 @@ body {
     color: red;
 }
 
-.log-in-btn {
-    background-color: rgba(204, 127, 134,1);
+.log-in-btn, .btn {
+    background-color: rgba(252, 241, 189,1);
     color: black;
     padding: 10px 20px;
     border-radius: 9px;
@@ -164,14 +163,14 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.log-in-btn:hover {
-    background-color: rgba(193, 104, 111, 1)
+.log-in-btn:hover, .btn:hover {
+    background-color: rgba(244, 232, 169, 1);
     transform: scale(1.1);
 }
 
-.play-btn, .btn {
-    background-color: rgba(252, 241, 189,1);
-    color: black;
+.play-btn {
+    background-color: rgba(204, 127, 134,1);
+    color: rgba(192, 206, 245,1);
     padding: 10px 20px;
     margin-left: 10px;
     border-radius: 9px;
@@ -181,8 +180,8 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.play-btn:hover, .btn:hover {
-    background-color: rgba(244, 232, 169, 1);
+.play-btn:hover {
+    background-color: rgba(193, 104, 111, 1);
     transform: scale(1.1);
 }
 
