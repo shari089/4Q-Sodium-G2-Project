@@ -207,7 +207,7 @@ section {
 
 .r-1.card > div,
 .r-2.card > div {
-  background: #fff;
+  background-color: rgba(0,0,0,0);
   border: 1px solid #ddd;
   border-radius: 6px;
   padding: 10px;
