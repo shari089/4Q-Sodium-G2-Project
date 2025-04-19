@@ -1,48 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Picture Pairs</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap">
-    <script src="script.js"></script>
-</head>
-<body>
-<video autoplay muted loop playsinline>
-<source src="MainMenu.mp4" type="video/mp4">
-</video>
-
-<div id="welcome-message" class="welcome-message"></div>
-
-<div class="container">
-	<button class="btn-login" id="login-btn" onclick="showLoginForm()">LOGIN</button>
-    <button class="btn-play" onclick="document.getElementById('difficulty-overlay').style.display = 'block';">PLAY</button>
-    <button class="btn-ld" onclick="document.getElementById('leaderboard-link').click();">LEADERBOARD</button>
-    <button class="btn-htp" onclick="document.getElementById('how-to-play').scrollIntoView({ behavior: 'smooth' });">HOW TO PLAY</button>
-    <button class="btn-contact" onclick="document.getElementById('contact-link').click();">CONTACT</button>
-</div>
-
-    <div class="overlay" id="difficulty-overlay">
-        <div class="field_set">
-            <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
-            <h2>Choose Difficulty Level</h2>
-            <button class="btn" onclick="window.location.href='easy.html';">Easy</button>
-            <button class="btn" onclick="window.location.href='hard.html';">Hard</button>
-        </div>
-    </div>
-    <div class="overlay" id="overlay">
-        <form id="login-form" class="field_set" onsubmit="return onLoginSubmit();">
-			<button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
-			<legend id="login-legend">Enter Username</legend>
-			<br>
-			<label for="username">Username: </label>
-			<input type="text" id="username" name="username" required>
-			<br><br>
-			<input type="reset" class="log-in-btn" value="RESET">
-			<input type="submit" class="log-in-btn" value="SUBMIT">
-		</form>
-	</div>
-
-</body>
+<html lang="en">
+    <head>
+        <title>Picture Pairs</title>
+    </head>
+    <body>
+			<div class="overlay" id="overlay">
+				<form action="index.html">
+					<fieldset form="form">
+						<legend>log in</legend>
+						<label for="username">username: </label>
+						<input type="text">
+						<br>
+						<label for="password">password: </label>
+						<input type="text">
+						<br>
+						<input type="reset" class="btn" value="reset">
+						<br>
+						<input type="button" class="btn" onclick="goBack()" value="submit">
+					</fieldset>
+				</form>
+			</div>
+	
+	<!-- header-->
+	    <header class="header">
+            <div class="container-1">
+                <!-- Logo -->
+                <a href="/" class="logo">
+                    <img src="../images/icon.jpg" alt="Logo">
+                </a>
+                <!-- Navigation -->
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a id="nav-active" href="xyz.html">LEADERBOARD</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </nav>
+                <!-- Search and CTA
+                    <!-- Search Button -->
+                    <div class="search">
+                        <button class="search-btn">
+                            <img src="../images/magnifying-glass-solid.svg" alt="Search Icon">
+                        </button>
+                        <input type="text" class="search-input" placeholder="Search...">
+                    </div>
+                    <a href="#" class="btn" onclick="getUsername()">Log in</a>        
+                </div>
+            </div>
+        </header>
+	    
+	<!-- Footer -->
+        <footer class="footer-2">
+            <div class="container-2">
+                <div class="footer-info">
+                    <span class="footer-title" style="font-size: 40px; letter-spacing: 1px">
+                        PICTURE PAIRS
+                        <br>
+                    </span>
+                    <p></p>
+                    <span class="description-1" style="color: rgb(188, 185, 180)">
+                        Lorem ipsum
+                    </span>
+                    <p class="description-1" style="color: rgb(188, 185, 180)">
+                        Copyright &copy;2024 <a href="#">Picture Pairs</a> 
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>
