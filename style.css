@@ -214,7 +214,7 @@ section {
 
 /* CARD STYLE - for individual info boxes */
 .card {
-  background-color: #fff;
+  background-color: rgba(1,1,1,0.7);
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(223, 0, 125, 0.3);
