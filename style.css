@@ -10,8 +10,8 @@ body {
 
 .background-video {
   position: fixed;
-  top-margin: 150px;
-  left-margin: 0;
+  top: 100px;
+  left: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
@@ -63,7 +63,7 @@ body {
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
-    padding: 15px 10px;
+    padding:0px 1px 1px 1px;
     letter-spacing: 2px;
     position: relative;
     transition: color 0.2s ease;
@@ -73,7 +73,7 @@ body {
     content: "";
     position: absolute;
     left: 0;
-    bottom: -1px;
+    bottom: 0px;
     width: 0;
     height: 2.5px;
     background-color: rgba(73, 87, 145, 1);
@@ -108,7 +108,7 @@ body {
      z-index: 2000;
      border: 2px solid #000;
      background-color: (0,0,0,0.1)
-     padding: 20px;
+     padding: 40px;
      border-radius: 9px;
      box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
      text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
@@ -123,7 +123,7 @@ body {
 .howToPlay-field-set {
     position: absolute;
     font-size: 17px;
-    color: white;
+    color: black;
     z-index: 2000;
     border: 2px solid #000;
     background-color: rgba(0,0,0,0.1);
@@ -193,7 +193,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 25px;
+  margin-top: 45px;
   width: 100%;
   height: calc(100vh - 150px);
 }
