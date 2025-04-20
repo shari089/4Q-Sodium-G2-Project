@@ -242,3 +242,10 @@ section {
   align-items: center;
   gap: 10px;
 }
+
+.log-in-btn,
+.btn,
+.play-btn {
+  font-family: 'Pixelify Sans', sans-serif !important;
+}
+
