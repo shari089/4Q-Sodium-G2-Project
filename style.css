@@ -115,7 +115,7 @@ body {
      backdrop-filter: blur(5px);
      font-weight: 700;
      width: 300px;
-     top: 50%;
+     top: 40%;
      left: 50%;
      transform: translate(-50%, -50%);
  }
@@ -155,7 +155,7 @@ body {
 
 .log-in-btn, .btn {
     background-color: rgba(204, 127, 134,1);
-    color: white;
+    color: black;
     padding: 10px 20px;
     border-radius: 9px;
     font-size: 16px;
@@ -177,7 +177,7 @@ body {
     color: rgba(53, 83, 141, 1);
     padding: 10px 20px;
     border-radius: 9px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
     cursor: pointer;
@@ -192,7 +192,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 90px;
+  margin-top: 30px;
   width: 100%;
   height: calc(100vh - 150px);
 }
