@@ -104,7 +104,7 @@ body {
  .field-set {
      position: absolute;
      font-size: 17px;
-     color: black;
+     color: white;
      z-index: 2000;
      border: 2px solid #000;
      background-color: rgba(0, 0, 0, 0.1);
@@ -155,7 +155,7 @@ body {
 
 .log-in-btn, .btn {
     background-color: rgba(204, 127, 134,1);
-    color: black;
+    color: white;
     padding: 10px 20px;
     border-radius: 9px;
     font-size: 16px;
