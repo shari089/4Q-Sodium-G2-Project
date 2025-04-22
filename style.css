@@ -10,7 +10,7 @@ body {
 
 .background-video {
   position: fixed;
-  top: 100px;
+  top: 50px;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -110,8 +110,8 @@ body {
      background-color: rgba(0, 0, 0, 0.1);
      padding: 20px;
      border-radius: 9px;
-     box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-     text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
+     box-shadow: 1px 1px 5px black;
+     text-shadow: 1px 1px 3px black;
      backdrop-filter: blur(5px);
      font-weight: 700;
      width: 300px;
@@ -130,7 +130,6 @@ body {
     padding: 20px;
     border-radius: 9px;
     box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-    text-shadow: 1px 1px 3px rgba(223,0,125,0.3);
     backdrop-filter: blur(5px);
     font-weight: 700;
     width: 90%;
@@ -175,7 +174,7 @@ body {
 
 .play-btn {
     background-color: rgba(192, 206, 245,1);
-    color: rgba(53, 83, 141, 1);;
+    color: rgba(53, 83, 141, 1);
     padding: 10px 20px;
     border-radius: 9px;
     font-size: 16px;
