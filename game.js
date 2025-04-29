@@ -72,7 +72,7 @@ function setupGame(cards, gameTime) {
     const cardBack = document.createElement("div");
     cardBack.className = "card-back";
     const img = document.createElement("img");
-    img.src = `images/${name}.png`; // Ensure images are named properly
+    img.src = images/${name}.png; // Ensure images are named properly
     img.alt = name;
     cardBack.appendChild(img);
 
@@ -97,6 +97,7 @@ function setupGame(cards, gameTime) {
 }
 
 function flipCard(card) {
+  if (lockBoard) return;
   if (card.classList.contains("matched") || card.classList.contains("flipped") || card === firstCard) return;
 
   card.classList.add("flipped");
@@ -105,6 +106,7 @@ function flipCard(card) {
     firstCard = card;
   } else {
     secondCard = card;
+    lockBoard = true;
     checkMatch();
   }
 }
@@ -138,6 +140,7 @@ function checkMatch() {
   updatePointsDisplay();
   firstCard = null;
   secondCard = null;
+  lockBoard = false;
 }
 
 function shuffle(array) {
