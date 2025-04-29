@@ -105,7 +105,7 @@ function checkMatch() {
     points -= 2;
     if (points < 0) {
       points = 0;
-      timeLeft = Math.max(0, timeLeft - 5); // Subtract 5 seconds if points go negative
+      timeLeft = Math.max(0, timeLeft - 5); // Subtract 5 seconds if points border a negative score (insteaed of the score going negative, time is subtracted instead)
     }
     setTimeout(() => {
       firstCard.innerHTML = "<span>?</span>";
