@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Picture Pairs Game</title>
-    <link rel="stylesheet" href="game.css"> <!-- if you have CSS, optional -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Picture Pairs Game</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Pixelify+Sans" rel="stylesheet">
 </head>
 <body>
 
-    <h1>Picture Pairs Game</h1>
+<div class="game-container">
+  <div class="game-header">
+    <span id="points">Points: 0</span>
+    <span id="timer">Time Left: 0</span>
+  </div>
+  <div id="game-board" class="game-board">
+    <!-- Cards will be created by JavaScript -->
+  </div>
+</div>
 
-    <div>
-        <button onclick="startGame('easy')">Easy</button>
-        <button onclick="startGame('hard')">Hard</button>
-    </div>
+<script src="game.js"></script>
 
-    <div id="timer">3:00</div>
-    <div id="pointScore">0</div>
-
-    <div id="board" style="display: grid; grid-template-columns: repeat(5, 100px); gap: 10px;">
-        <!-- Cards will appear here -->
-    </div>
-
-    <script src="game.js"></script>
 </body>
 </html>
