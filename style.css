@@ -291,12 +291,14 @@ section {
 #board .card,
 #game-board .card {
   width: 100px;
-  height: 140px;
-  object-fit: cover;
+  height: 100px; /* make square */
   border: 2px solid #ccc;
   border-radius: 8px;
   transition: transform 0.3s ease;
   cursor: pointer;
+  background-color: #fff;
+  background-size: cover;
+  background-position: center;
 }
 
 #board .card:hover,
