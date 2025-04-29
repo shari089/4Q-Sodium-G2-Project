@@ -121,6 +121,9 @@ function checkMatch() {
     secondCard.classList.add("matched");
     points += 10;
     matches++;
+    
+    resetFlippedCards(); // Reset card selection
+    
     if (matches === totalPairs) {
       clearInterval(timer);
       alert("You matched all pairs! Final score: " + points);
@@ -130,18 +133,17 @@ function checkMatch() {
     points -= 2;
     if (points < 0) {
       points = 0;
-      timeLeft = Math.max(0, timeLeft - 5); // reduce time by 5 seconds for incorrect match
+      timeLeft = Math.max(0, timeLeft - 5); // Penalty
     }
+
     setTimeout(() => {
       firstCard.classList.remove("flipped");
       secondCard.classList.remove("flipped");
+      resetFlippedCards(); // Reset after cards flip back
     }, 1000);
   }
 
   updatePointsDisplay();
-  firstCard = null;
-  secondCard = null;
-  lockBoard = false;
 }
 
 function shuffle(array) {
@@ -158,4 +160,10 @@ function updatePointsDisplay() {
 
 function updateTimerDisplay() {
   document.getElementById("timer").innerText = `Time Left: ${timeLeft}`;
+}
+
+function resetFlippedCards() {
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
 }
