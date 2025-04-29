@@ -1,3 +1,7 @@
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* Home Page Styles                                                         */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
 body {
   margin: 0;
   padding: 0;
@@ -34,158 +38,160 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-
 .container-1 {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .logo img {
-    max-height: 40px;
-    margin-left: 15px;
+  max-height: 40px;
+  margin-left: 15px;
 }
 
 .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-list a {
-    text-decoration: none;
-    color: rgba(33, 46, 100, 1);
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding:0px 1px 5px 1px;
-    letter-spacing: 2px;
-    position: relative;
-    transition: color 0.2s ease;
+  text-decoration: none;
+  color: rgba(33, 46, 100, 1);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0px 1px 5px 1px;
+  letter-spacing: 2px;
+  position: relative;
+  transition: color 0.2s ease;
 }
 
 .nav-list a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0px;
-    width: 0;
-    height: 2.5px;
-    background-color: rgba(73, 87, 145, 1);
-    transition: width 0.3s ease;
-    border-radius: 5px;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 0;
+  height: 2.5px;
+  background-color: rgba(73, 87, 145, 1);
+  transition: width 0.3s ease;
+  border-radius: 5px;
 }
 
 .nav-list a:hover::after,
 .nav-list a.active::after {
-    width: 100%;
-    background-color: rgba(73, 87, 145, 1);
+  width: 100%;
+  background-color: rgba(73, 87, 145, 1);
 }
 
 .nav-list a.active {
-    color: rgba(73, 87, 145, 1);
+  color: rgba(73, 87, 145, 1);
 }
 
 .overlay {
-     position: absolute;
-     display: none;
-     height: 100%;
-     width: 100%;
-     justify-content: center;
-     align-items: center;
-     z-index: 3000;
-     background-color: rgba(0, 0, 0, 0);
- }
- .field-set {
-     position: absolute;
-     font-size: 17px;
-     color: white;
-     z-index: 2000;
-     border: 2px solid #000;
-     background-color: rgba(0, 0, 0, 0.1);
-     padding: 20px;
-     border-radius: 9px;
-     box-shadow: 1px 1px 5px black;
-     text-shadow: 1px 1px 3px black;
-     backdrop-filter: blur(5px);
-     font-weight: 700;
-     width: 300px;
-     top: 40%;
-     left: 50%;
-     transform: translate(-50%, -50%);
- }
+  position: absolute;
+  display: none;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.field-set {
+  position: absolute;
+  font-size: 17px;
+  color: white;
+  z-index: 2000;
+  border: 2px solid #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: 1px 1px 5px black;
+  text-shadow: 1px 1px 3px black;
+  backdrop-filter: blur(5px);
+  font-weight: 700;
+  width: 300px;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .howToPlay-field-set {
-    position: absolute;
-    font-size: 17px;
-    color: black;
-    z-index: 2000;
-    border: 2px solid #000;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    border-radius: 9px;
-    box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
-    backdrop-filter: blur(5px);
-    font-weight: 700;
-    width: 90%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  font-size: 17px;
+  color: black;
+  z-index: 2000;
+  border: 2px solid #000;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 9px;
+  box-shadow: 1px 1px 5px rgba(223,0,125,0.3);
+  backdrop-filter: blur(5px);
+  font-weight: 700;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: transparent;
-    border: none;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
 }
 .close-btn:hover {
-    color: red;
+  color: red;
 }
 
-.log-in-btn, .btn {
-    background-color: rgba(204, 127, 134,1);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 9px;
-    font-size: 16px;
-    margin-bottom: 5px;
-    margin-right: 20px;
-    margin-left: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.log-in-btn,
+.btn {
+  background-color: rgba(204, 127, 134, 1);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 9px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.log-in-btn:hover, .btn:hover {
-    background-color: rgba(193, 104, 111, 1);
-    transform: scale(1.1);
+.log-in-btn:hover,
+.btn:hover {
+  background-color: rgba(193, 104, 111, 1);
+  transform: scale(1.1);
 }
 
 .play-btn {
-    background-color: rgba(192, 206, 245,1);
-    color: rgba(53, 83, 141, 1);
-    padding: 10px 20px;
-    border-radius: 9px;
-    font-size: 20px;
-    font-weight: 700;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  background-color: rgba(192, 206, 245, 1);
+  color: rgba(53, 83, 141, 1);
+  padding: 10px 20px;
+  border-radius: 9px;
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 .play-btn:hover {
-    background-color: rgba(160, 181, 238, 1);
-    transform: scale(1.1);
+  background-color: rgba(160, 181, 238, 1);
+  transform: scale(1.1);
 }
 
 .play-btn-position {
@@ -198,7 +204,7 @@ body {
 }
 
 section {
-    padding: 40px 20px;
+  padding: 40px 20px;
 }
 
 .r-1,
@@ -246,3 +252,62 @@ section {
   font-family: 'Pixelify Sans', sans-serif !important;
 }
 
+
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* Game Page Styles                                                         */
+/* (Scoped so home-page rules are unaffected)                                */
+/* ──────────────────────────────────────────────────────────────────────────── */
+
+/* Game container & header */
+.game-container {
+  max-width: 600px;
+  margin: 40px auto;
+}
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Timer & Points display */
+#timer,
+#pointScore,
+#points {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Board grid */
+#board,
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  grid-gap: 10px;
+  justify-content: center;
+}
+
+/* Card styling (only within game board) */
+#board .card,
+#game-board .card {
+  width: 100px;
+  height: 140px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+#board .card:hover,
+#game-board .card:hover {
+  transform: scale(1.05);
+  border-color: #4CAF50;
+}
+
+/* Matched state */
+#board .matched,
+#game-board .matched {
+  opacity: 0.5;
+  border-color: gold;
+}
