@@ -57,3 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+function startGame(difficulty) {
+  localStorage.setItem("level", difficulty);
+  window.location.href = "game.html";
+}
