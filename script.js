@@ -1,3 +1,4 @@
+// HOME PAGE
 // handles form submission
 function onLoginSubmit() {
   let username = document.getElementById("username").value;
@@ -47,6 +48,7 @@ window.onload = function () {
   }
 };
 
+//active nav bars
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-list a').forEach(link => {
     link.addEventListener('click', function () {
@@ -55,3 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+//GAME
+
