@@ -1,51 +1,3 @@
-let firstCard = null;
-let secondCard = null;
-let points = 0;
-let timer;
-let timeLeft;
-let matches = 0;
-let totalPairs;
-let level = localStorage.getItem("level"); // Load difficulty selected
-
-// EASY cards
-const easyCards = [
-  "Apple", "Apple",
-  "Banana", "Banana",
-  "Blueberry", "Blueberry",
-  "Watermelon", "Watermelon",
-  "Grapes", "Grapes",
-  "Avocado", "Avocado"
-];
-
-// HARD cards (scientists and inventions)
-const hardCards = [
-  "Einstein", "Relativity",
-  "Newton", "Gravity",
-  "Curie", "Radioactivity",
-  "Tesla", "AC_Current",
-  "Darwin", "Evolution"
-];
-
-function startGame(selectedLevel) {
-  level = selectedLevel;
-  localStorage.setItem("level", level);
-  window.location.href = "game.html";
-}
-
-window.onload = function () {
-  if (!level) {
-    alert("No difficulty selected! Returning to home page.");
-    window.location.href = "index.html";
-    return;
-  }
-
-  if (level === "easy") {
-    setupGame(easyCards.slice(), 60); // 60 seconds
-  } else if (level === "hard") {
-    setupGame(hardCards.slice(), 90); // 90 seconds
-  }
-};
-
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
   gameBoard.innerHTML = ""; // clear previous if any
@@ -126,7 +78,7 @@ function checkMatch() {
     points -= 2;
     if (points < 0) {
       points = 0;
-      timeLeft = Math.max(0, timeLeft - 5);
+      timeLeft = Math.max(0, timeLeft - 5); // reduce time by 5 seconds for incorrect match
     }
     setTimeout(() => {
       firstCard.classList.remove("flipped");
