@@ -1,6 +1,55 @@
+let firstCard = null;
+let secondCard = null;
+let points = 0;
+let timer;
+let timeLeft;
+let matches = 0;
+let totalPairs;
+let lockBoard = false;
+let level = localStorage.getItem("level"); // Load difficulty selected
+
+// EASY cards
+const easyCards = [
+  "Avocado", "Avocado",
+  "Banana", "Banana",
+  "Lemon", "Lemon",
+  "Melon", "Melon",
+  "Orange", "Orange",
+  "Strawberry", "Strawberry"
+];
+
+// HARD cards (scientists and inventions)
+const hardCards = [
+  "Einstein", "Relativity",
+  "Newton", "Gravity",
+  "Curie", "Radioactivity",
+  "Tesla", "AC_Current",
+  "Darwin", "Evolution"
+];
+
+function startGame(selectedLevel) {
+  level = selectedLevel;
+  localStorage.setItem("level", level);
+  window.location.href = "game.html";
+}
+
+window.onload = function () {
+  if (!level) {
+    alert("No difficulty selected! Returning to home page.");
+    window.location.href = "index.html";
+    return;
+  }
+
+  if (level === "easy") {
+    setupGame(easyCards.slice(), 60); // 60 seconds
+  } else if (level === "hard") {
+    setupGame(hardCards.slice(), 90); // 90 seconds
+  }
+};
+
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
-  gameBoard.innerHTML = ""; // clear previous if any
+  gameBoard.innerHTML = ""; 
   cards = shuffle(cards);
   totalPairs = cards.length / 2;
   timeLeft = gameTime;
