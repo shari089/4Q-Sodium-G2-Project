@@ -21,7 +21,7 @@ const easyCards = [
 // HARD cards (scientists and inventions)
 const hardCards = [
   "Thomas Edison", "Light Bulb",
-  "Nikolas Tesla", "Tesla Coil",
+  "Nikola Tesla", "Tesla Coil",
   "Johannes Gutenburg", "Printing Press",
   "Guglielmo Marconi", "Wireless Telegraph",
   "Alexander Graham Bell", "Telephone",
