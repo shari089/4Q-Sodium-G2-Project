@@ -22,9 +22,8 @@ const hardCards = [
   "Einstein", "Relativity",
   "Newton", "Gravity",
   "Curie", "Radioactivity",
-  "Tesla", "AC Current",
-  "Darwin", "Evolution",
-  "Faraday", "Electromagnetism"
+  "Tesla", "AC_Current",
+  "Darwin", "Evolution"
 ];
 
 function startGame(selectedLevel) {
@@ -33,7 +32,7 @@ function startGame(selectedLevel) {
   window.location.href = "game.html";
 }
 
-window.onload = function() {
+window.onload = function () {
   if (!level) {
     alert("No difficulty selected! Returning to home page.");
     window.location.href = "index.html";
@@ -49,6 +48,7 @@ window.onload = function() {
 
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
+  gameBoard.innerHTML = ""; // clear previous if any
   cards = shuffle(cards);
   totalPairs = cards.length / 2;
   timeLeft = gameTime;
@@ -60,7 +60,25 @@ function setupGame(cards, gameTime) {
     const card = document.createElement("div");
     card.className = "card";
     card.dataset.name = name;
-    card.innerHTML = "<span>?</span>";
+
+    const cardInner = document.createElement("div");
+    cardInner.className = "card-inner";
+
+    const cardFront = document.createElement("div");
+    cardFront.className = "card-front";
+    cardFront.innerHTML = "<span>?</span>";
+
+    const cardBack = document.createElement("div");
+    cardBack.className = "card-back";
+    const img = document.createElement("img");
+    img.src = `images/${name}.png`; // Ensure images are named properly
+    img.alt = name;
+    cardBack.appendChild(img);
+
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+    card.appendChild(cardInner);
+
     card.addEventListener("click", () => flipCard(card));
     gameBoard.appendChild(card);
   });
@@ -78,9 +96,9 @@ function setupGame(cards, gameTime) {
 }
 
 function flipCard(card) {
-  if (card.classList.contains("matched") || card === firstCard) return;
+  if (card.classList.contains("matched") || card.classList.contains("flipped") || card === firstCard) return;
 
-  card.innerHTML = card.dataset.name;
+  card.classList.add("flipped");
 
   if (!firstCard) {
     firstCard = card;
@@ -91,7 +109,10 @@ function flipCard(card) {
 }
 
 function checkMatch() {
-  if (firstCard.dataset.name === secondCard.dataset.name) {
+  const name1 = firstCard.dataset.name;
+  const name2 = secondCard.dataset.name;
+
+  if (name1 === name2) {
     firstCard.classList.add("matched");
     secondCard.classList.add("matched");
     points += 10;
@@ -105,13 +126,14 @@ function checkMatch() {
     points -= 2;
     if (points < 0) {
       points = 0;
-      timeLeft = Math.max(0, timeLeft - 5); // Subtract 5 seconds if points border a negative score (insteaed of the score going negative, time is subtracted instead)
+      timeLeft = Math.max(0, timeLeft - 5);
     }
     setTimeout(() => {
-      firstCard.innerHTML = "<span>?</span>";
-      secondCard.innerHTML = "<span>?</span>";
+      firstCard.classList.remove("flipped");
+      secondCard.classList.remove("flipped");
     }, 1000);
   }
+
   updatePointsDisplay();
   firstCard = null;
   secondCard = null;
