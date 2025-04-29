@@ -20,11 +20,12 @@ const easyCards = [
 
 // HARD cards (scientists and inventions)
 const hardCards = [
-  "Einstein", "Relativity",
-  "Newton", "Gravity",
-  "Curie", "Radioactivity",
-  "Tesla", "AC_Current",
-  "Darwin", "Evolution"
+  "Thomas Edison", "Light Bulb",
+  "Nikolas Tesla", "Tesla Coil",
+  "Johannes Gutenburg", "Printing Press",
+  "Guglielmo Marconi", "Wireless Telegraph",
+  "Alexander Graham Bell", "Telephone",
+  "Alessandro Volta", "Electrical Battery"
 ];
 
 function startGame(selectedLevel) {
