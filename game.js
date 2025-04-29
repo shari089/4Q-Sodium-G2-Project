@@ -9,12 +9,12 @@ let level = localStorage.getItem("level"); // Load difficulty selected
 
 // EASY cards
 const easyCards = [
-  "apple", "apple",
-  "banana", "banana",
-  "cat", "cat",
-  "dog", "dog",
-  "fish", "fish",
-  "hat", "hat"
+  "Apple", "Apple",
+  "Banana", "Banana",
+  "Blueberry", "Blueberry",
+  "Watermelon", "Watermelon",
+  "Grapes", "Grapes",
+  "Avocado", "Avocado"
 ];
 
 // HARD cards (scientists and inventions)
