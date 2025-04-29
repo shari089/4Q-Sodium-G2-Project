@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Picture Pairs Game</title>
+    <link rel="stylesheet" href="game.css"> <!-- if you have CSS, optional -->
+</head>
+<body>
+
+    <h1>Picture Pairs Game</h1>
+
+    <div>
+        <button onclick="startGame('easy')">Easy</button>
+        <button onclick="startGame('hard')">Hard</button>
+    </div>
+
+    <div id="timer">3:00</div>
+    <div id="pointScore">0</div>
+
+    <div id="board" style="display: grid; grid-template-columns: repeat(5, 100px); gap: 10px;">
+        <!-- Cards will appear here -->
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
