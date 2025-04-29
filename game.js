@@ -72,7 +72,7 @@ function setupGame(cards, gameTime) {
     const cardBack = document.createElement("div");
     cardBack.className = "card-back";
     const img = document.createElement("img");
-    img.src = `images/${name}.png`; // Ensure images are named properly
+    img.src = `images/${name}.jpg`; // Ensure images are named properly
     img.alt = name;
     cardBack.appendChild(img);
 
