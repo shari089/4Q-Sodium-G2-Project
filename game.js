@@ -41,7 +41,7 @@ function startGame(selectedLevel) {
 window.onload = function () {
   username = localStorage.getItem("username");
   document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
- document.getElementById("login-btn").innerText = "Change Username";
+  document.getElementById("login-btn").innerText = "Change Username";
 
   level = localStorage.getItem("level");
 
@@ -87,7 +87,7 @@ function setupGame(cards, gameTime) {
     cardInner.className = "card-inner";
 
     const cardFront = document.createElement("div");
-     cardFront.className = "card-front";
+    cardFront.className = "card-front";
     cardFront.innerHTML = "<span>?</span>";
 
     const cardBack = document.createElement("div");
@@ -171,6 +171,7 @@ function shuffle(array) {
   }
   return array;
 }
+
 function updatePointsDisplay() {
   document.getElementById("points").innerText = `Points: ${points}`;
 }
