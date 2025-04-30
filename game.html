@@ -62,7 +62,7 @@
       </a>
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href="#" class="nav-link">Home</a></li>
+          <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="#" class="nav-link">Leaderboard</a></li>
           <li><a href="#" class="nav-link">About</a></li>
           <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
@@ -83,6 +83,17 @@
   <div id="game-board" class="game-board">
   </div>
 </div>
+
+<!-- Game Over Popup -->
+<div class="overlay" id="game-over-overlay" style="display:none;">
+  <div class="field-set">
+    <h2 id="game-over-message">Game Over!</h2>
+    <p id="final-score"></p>
+    <button onclick="restartGame()">Play Again</button>
+    <button onclick="goHome()">Return to Home</button>
+  </div>
+</div>
+
 
 <script src="game.js"></script>
 
