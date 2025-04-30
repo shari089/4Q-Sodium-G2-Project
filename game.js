@@ -187,6 +187,15 @@ function resetFlippedCards() {
 }
 
 function showEndGamePopup(message) {
+  const previousScore = parseInt(localStorage.getItem("highScore")) || 0;
+  let resultMessage = message;
+
+  if (points > previousScore) {
+    resultMessage += "<br><strong>🎉 New High Score!</strong>";
+    localStorage.setItem("highScore", points);
+  } else {
+    resultMessage += `<br>Your high score: ${previousScore}`;
+  }
   const popup = document.createElement("div");
   popup.className = "overlay";
   popup.style.display = "flex";
@@ -199,3 +208,6 @@ function showEndGamePopup(message) {
   `;
   document.body.appendChild(popup);
 }
+
+
+
