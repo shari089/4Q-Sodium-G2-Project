@@ -28,6 +28,10 @@ const hardCards = [
   "Alessandro Volta", "Electrical Battery"
 ];
 
+function howToPlay() {
+  document.getElementById("how-to-play-overlay").style.display = "flex";
+}
+
 function startGame(selectedLevel) {
   level = selectedLevel;
   localStorage.setItem("level", level);
