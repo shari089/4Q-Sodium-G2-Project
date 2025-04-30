@@ -22,7 +22,7 @@ const easyCards = [
 const hardCards = [
   "Thomas Edison", "Light Bulb",
   "Nikola Tesla", "Tesla Coil",
-  "Johannes Gutenburg", "Printing Press",
+  "Johannes Gutenberg", "Printing Press",
   "Guglielmo Marconi", "Wireless Telegraph",
   "Alexander Graham Bell", "Telephone",
   "Alessandro Volta", "Electrical Battery"
