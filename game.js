@@ -35,16 +35,25 @@ function startGame(selectedLevel) {
 }
 
 window.onload = function () {
+  username = localStorage.getItem("username");
+  document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
+  document.getElementById("login-btn").innerText = "Change Username";
+
+  level = localStorage.getItem("level");
+
   if (!level) {
     alert("No difficulty selected! Returning to home page.");
     window.location.href = "index.html";
     return;
   }
 
+  // cards will be stored for use after "Start Game" is clicked
   if (level === "easy") {
-    setupGame(easyCards.slice(), 60); // 60 seconds
+    window.cardsToUse = easyCards.slice();
+    window.gameTime = 60;
   } else if (level === "hard") {
-    setupGame(hardCards.slice(), 90); // 90 seconds
+    window.cardsToUse = hardCards.slice();
+    window.gameTime = 90;
   }
 };
 
@@ -84,6 +93,11 @@ function setupGame(cards, gameTime) {
     card.addEventListener("click", () => flipCard(card));
     gameBoard.appendChild(card);
   });
+
+  function startActualGame() {
+  document.getElementById("start-game-overlay").style.display = "none";
+  setupGame(cardsToUse, gameTime);
+}
 
   // Start countdown
   timer = setInterval(() => {
@@ -125,9 +139,8 @@ function checkMatch() {
     resetFlippedCards(); // Reset card selection
     
     if (matches === totalPairs) {
-      clearInterval(timer);
-      alert("You matched all pairs! Final score: " + points);
-      window.location.href = "index.html";
+    clearInterval(timer);
+    showEndGamePopup("You matched all pairs! Final score: " + points);
     }
   } else {
     points -= 2;
@@ -166,4 +179,18 @@ function resetFlippedCards() {
   firstCard = null;
   secondCard = null;
   lockBoard = false;
+}
+
+function showEndGamePopup(message) {
+  const popup = document.createElement("div");
+  popup.className = "overlay";
+  popup.style.display = "flex";
+  popup.innerHTML = `
+    <div class="field-set">
+      <h2>${message}</h2>
+      <button onclick="window.location.href='index.html'" class="btn">Return to Home</button>
+      <button onclick="window.location.reload()" class="btn">Play Again</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
 }
