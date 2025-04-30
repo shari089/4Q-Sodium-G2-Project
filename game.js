@@ -6,7 +6,7 @@ let timeLeft;
 let matches = 0;
 let totalPairs;
 let lockBoard = false;
-let level = localStorage.getItem("level"); // Load difficulty selected
+let level = localStorage.getItem("level");
 
 // EASY cards
 const easyCards = [
@@ -47,7 +47,6 @@ window.onload = function () {
     return;
   }
 
-  // cards will be stored for use after "Start Game" is clicked
   if (level === "easy") {
     window.cardsToUse = easyCards.slice();
     window.gameTime = 60;
@@ -55,18 +54,26 @@ window.onload = function () {
     window.cardsToUse = hardCards.slice();
     window.gameTime = 90;
   }
+
+  // Set up the "Start Game" button
+  const startBtn = document.getElementById("start-game-btn");
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      document.getElementById("start-game-overlay").style.display = "none";
+      setupGame(window.cardsToUse, window.gameTime);
+    });
+  }
 };
 
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
-  gameBoard.innerHTML = ""; 
+  gameBoard.innerHTML = "";
   cards = shuffle(cards);
   totalPairs = cards.length / 2;
   timeLeft = gameTime;
   updatePointsDisplay();
   updateTimerDisplay();
 
-  // Create cards
   cards.forEach(name => {
     const card = document.createElement("div");
     card.className = "card";
@@ -82,7 +89,7 @@ function setupGame(cards, gameTime) {
     const cardBack = document.createElement("div");
     cardBack.className = "card-back";
     const img = document.createElement("img");
-    img.src = `images/${name}.jpg`; // Ensure images are named properly
+    img.src = `images/${name}.jpg`;
     img.alt = name;
     cardBack.appendChild(img);
 
@@ -94,12 +101,6 @@ function setupGame(cards, gameTime) {
     gameBoard.appendChild(card);
   });
 
-  function startActualGame() {
-  document.getElementById("start-game-overlay").style.display = "none";
-  setupGame(cardsToUse, gameTime);
-}
-
-  // Start countdown
   timer = setInterval(() => {
     timeLeft--;
     updateTimerDisplay();
@@ -135,24 +136,24 @@ function checkMatch() {
     secondCard.classList.add("matched");
     points += 10;
     matches++;
-    
-    resetFlippedCards(); // Reset card selection
-    
+
+    resetFlippedCards();
+
     if (matches === totalPairs) {
-    clearInterval(timer);
-    showEndGamePopup("You matched all pairs! Final score: " + points);
+      clearInterval(timer);
+      showEndGamePopup("You matched all pairs! Final score: " + points);
     }
   } else {
     points -= 2;
     if (points < 0) {
       points = 0;
-      timeLeft = Math.max(0, timeLeft - 5); // Penalty
+      timeLeft = Math.max(0, timeLeft - 5);
     }
 
     setTimeout(() => {
       firstCard.classList.remove("flipped");
       secondCard.classList.remove("flipped");
-      resetFlippedCards(); // Reset after cards flip back
+      resetFlippedCards();
     }, 1000);
   }
 
