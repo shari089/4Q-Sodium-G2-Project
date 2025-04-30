@@ -9,6 +9,7 @@ body {
   height: 100%;
   font-family: 'Pixelify Sans', sans-serif !important;
   overflow-x: hidden;
+  overflow-y: hidden;
   position: relative;
 }
 
@@ -107,7 +108,7 @@ body {
 }
 
 .field-set {
-  position: absolute;
+  position: fixed;
   font-size: 17px;
   color: white;
   z-index: 2000;
