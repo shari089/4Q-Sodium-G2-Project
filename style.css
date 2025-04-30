@@ -218,7 +218,7 @@ section {
   width: 100%;
 }
 
-.card {
+.how_to_play_card {
   background-color: rgba(240, 244, 251, 0.8);
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -228,7 +228,7 @@ section {
   transition: transform 0.2s ease-in-out;
 }
 
-.card:hover {
+.how_to_play_card:hover {
   transform: scale(1.05);
 }
 
@@ -236,7 +236,7 @@ section {
   font-size: 18px;
 }
 
-.card p {
+.how_to_play_card p {
   font-size: 14px;
 }
 
@@ -356,10 +356,5 @@ section {
 @media (max-width: 700px) {
   #game-board {
     justify-content: center;
-  }
-
-  .card {
-    width: 80px;
-    height: 80px;
   }
 }
