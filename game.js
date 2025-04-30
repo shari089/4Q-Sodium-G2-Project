@@ -42,10 +42,6 @@ window.onload = function () {
   username = localStorage.getItem("username");
   document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
   document.getElementById("login-btn").innerText = "Change Username";
-  const prevScore = localStorage.getItem("highScore") || 0;
-  const prevScoreElement = document.getElementById("previous-score");
-  if (prevScoreElement) {
-  prevScoreElement.innerText = `High Score: ${prevScore}`;
 }
 
 
@@ -193,15 +189,6 @@ function resetFlippedCards() {
 }
 
 function showEndGamePopup(message) {
-  const previousScore = parseInt(localStorage.getItem("highScore")) || 0;
-  let resultMessage = message;
-
-  if (points > previousScore) {
-    resultMessage += "<br><strong>🎉 New High Score!</strong>";
-    localStorage.setItem("highScore", points);
-  } else {
-    resultMessage += `<br>Your high score: ${previousScore}`;
-  }
   const popup = document.createElement("div");
   popup.className = "overlay";
   popup.style.display = "flex";
