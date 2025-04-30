@@ -42,6 +42,12 @@ window.onload = function () {
   username = localStorage.getItem("username");
   document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
   document.getElementById("login-btn").innerText = "Change Username";
+  const prevScore = localStorage.getItem("highScore") || 0;
+  const prevScoreElement = document.getElementById("previous-score");
+  if (prevScoreElement) {
+  prevScoreElement.innerText = `High Score: ${prevScore}`;
+}
+
 
   level = localStorage.getItem("level");
 
