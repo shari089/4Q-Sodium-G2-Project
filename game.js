@@ -1,6 +1,7 @@
 let firstCard = null;
 let secondCard = null;
-let points = 0;
+let currentScore = 0; // Current score
+let highScore = localStorage.getItem("highScore") || 0; // Previous high score
 let timer;
 let timeLeft;
 let matches = 0;
@@ -40,7 +41,7 @@ function startGame(selectedLevel) {
 
 window.onload = function () {
   username = localStorage.getItem("username");
-  document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
+  document.getElementById("welcome-message").innerText = Welcome, ${username || 'Guest'}!;
   document.getElementById("login-btn").innerText = "Change Username";
 
   level = localStorage.getItem("level");
@@ -93,7 +94,7 @@ function setupGame(cards, gameTime) {
     const cardBack = document.createElement("div");
     cardBack.className = "card-back";
     const img = document.createElement("img");
-    img.src = `images/${name}.jpg`;
+    img.src = images/${name}.jpg;
     img.alt = name;
     cardBack.appendChild(img);
 
@@ -110,7 +111,7 @@ function setupGame(cards, gameTime) {
     updateTimerDisplay();
     if (timeLeft <= 0) {
       clearInterval(timer);
-      alert("Time's up! You scored " + points + " points.");
+      alert("Time's up! You scored " + currentScore + " points.");
       window.location.href = "index.html";
     }
   }, 1000);
@@ -138,19 +139,20 @@ function checkMatch() {
   if (name1 === name2) {
     firstCard.classList.add("matched");
     secondCard.classList.add("matched");
-    points += 10;
+    currentScore += 10; // Update current score
     matches++;
 
     resetFlippedCards();
 
     if (matches === totalPairs) {
       clearInterval(timer);
-      showEndGamePopup("You matched all pairs! Final score: " + points);
+      showEndGamePopup("You matched all pairs! Final score: " + currentScore);
+      checkHighScore(); // Check for new high score
     }
   } else {
-    points -= 2;
-    if (points < 0) {
-      points = 0;
+    currentScore -= 2; // Update current score
+    if (currentScore < 0) {
+      currentScore = 0;
       timeLeft = Math.max(0, timeLeft - 5);
     }
 
@@ -164,6 +166,14 @@ function checkMatch() {
   updatePointsDisplay();
 }
 
+function checkHighScore() {
+  if (currentScore > highScore) {
+    highScore = currentScore;
+    localStorage.setItem("highScore", highScore);
+    alert("Congratulations! You've set a new high score: " + highScore);
+  }
+}
+
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -173,11 +183,19 @@ function shuffle(array) {
 }
 
 function updatePointsDisplay() {
-  document.getElementById("points").innerText = `Points: ${points}`;
+  document.getElementById("points").innerText = Points: ${currentScore};
+  document.getElementById("high-score").innerText = High Score: ${highScore};
+  
+  // Check if current score beats the high score
+  if (currentScore > highScore) {
+    document.getElementById("score-status").innerText = "New High Score!";
+  } else {
+    document.getElementById("score-status").innerText = "";
+  }
 }
 
 function updateTimerDisplay() {
-  document.getElementById("timer").innerText = `Time Left: ${timeLeft}`;
+  document.getElementById("timer").innerText = Time Left: ${timeLeft};
 }
 
 function resetFlippedCards() {
@@ -194,7 +212,6 @@ function showEndGamePopup(message) {
     <div class="field-set">
       <h2>${message}</h2>
       <button onclick="window.location.href='index.html'" class="btn">Return to Home</button>
-      <button onclick="window.location.reload()" class="btn">Play Again</button>
     </div>
   `;
   document.body.appendChild(popup);
