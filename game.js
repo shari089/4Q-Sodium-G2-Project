@@ -28,6 +28,10 @@ const hardCards = [
   "Alessandro Volta", "Electrical Battery"
 ];
 
+function showLoginForm() {
+  document.getElementById("overlay").style.display = "flex";
+}
+
 function howToPlay() {
   document.getElementById("how-to-play-overlay").style.display = "flex";
 }
