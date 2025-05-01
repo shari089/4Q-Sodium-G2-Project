@@ -250,6 +250,16 @@ function restartGame() {
   window.location.reload();
 }
 
+// navbar active link toggle
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-list a').forEach(link => {
+    link.addEventListener('click', function () {
+      document.querySelectorAll('.nav-list a').forEach(el => el.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+});
+
 function goHome() {
   window.location.href = "index.html";
 }
