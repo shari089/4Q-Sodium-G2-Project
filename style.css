@@ -197,6 +197,7 @@ h2 {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .play-btn:hover {
   background-color: rgba(160, 181, 238, 1);
   transform: scale(1.1);
@@ -255,17 +256,15 @@ section {
 
 .log-in-btn,
 .btn,
+.change-difficulty-btn,
 .play-btn {
   font-family: 'Pixelify Sans', sans-serif !important;
 }
 
-
 /* ──────────────────────────────────────────────────────────────────────────── */
-/* Game Page Styles                                                         */
-/* (Scoped so home-page rules are unaffected)                                */
+/* Game CSS                                                          */
 /* ──────────────────────────────────────────────────────────────────────────── */
 
-/* Game container padding to avoid header overlap */
 .game-container {
   padding-top: 100px;
   display: flex;
@@ -274,7 +273,6 @@ section {
   min-height: calc(100vh - 100px);
 }
 
-/* Score, timer, and highscore */
 .game-header {
     font-size: 1.5rem;
     font-weight: 600;
@@ -295,7 +293,6 @@ section {
     color: rgba(33, 46, 100, 1);
 }
 
-/* Game board layout */
 #game-board {
   display: flex;
   flex-wrap: wrap;
@@ -306,14 +303,12 @@ section {
   padding: 10px;
 }
 
-/* Card container */
 .card {
   width: 100px;
   height: 100px;
   perspective: 1000px;
 }
 
-/* Card inner for flip */
 .card-inner {
   width: 100%;
   height: 100%;
@@ -326,7 +321,6 @@ section {
   transform: rotateY(180deg);
 }
 
-/* Front and back */
 .card-front,
 .card-back {
   position: absolute;
