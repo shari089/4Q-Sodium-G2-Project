@@ -55,6 +55,16 @@
         </section>
       </div>
     </div>
+
+    <!-- Difficulty Overlay -->
+    <div class="overlay" id="difficulty-overlay">
+      <div class="field-set">
+        <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
+        <h2>Choose Difficulty Level</h2>
+        <button class="btn" onclick="startGame('easy');">Easy</button>
+        <button class="btn" onclick="startGame('hard');">Hard</button>
+      </div>
+    </div>
   
     <!-- Header / Nav -->
     <header class="header">
@@ -70,7 +80,10 @@
             <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
           </ul>
         </nav>
-        <div id="welcome-message" class="welcome-message"></div>
+        <div>
+          <span id="welcome-message" class="welcome-message"></span>
+          <button class="login-btn" onclick="function()">Change difficulty</button>
+        </div>
       </div>
     </header>
   
