@@ -110,10 +110,10 @@ body {
 .field-set {
   position: fixed;
   font-size: 17px;
-  color: rgb(29, 41, 86, 1);
+  color: rgba(29, 41, 86, 1);
   z-index: 2000;
-  border: 2px solid #000;
-  background-color: rgb(124, 218, 249, 0.5);
+  border: -10px solid #000;
+  background-color: rgba(124, 218, 249, 0.8);
   padding: 20px;
   border-radius: 9px;
   box-shadow: 1px 1px 5px black;
@@ -182,7 +182,7 @@ body {
 
 .play-btn {
   background-color: rgba(192, 206, 245, 1);
-  color: rgba(53, 83, 141, 1);
+  color: rgba(29, 41, 86, 1);
   padding: 10px 20px;
   border-radius: 9px;
   font-size: 20px;
