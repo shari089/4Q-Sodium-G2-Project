@@ -52,17 +52,11 @@ function startGame(selectedLevel) {
 window.onload = function () {
   const username = localStorage.getItem("username") || "Guest";
   const welcomeMessage = document.getElementById("welcome-message");
-  const loginBtn = document.getElementById("login-btn");
 
   if (welcomeMessage) {
-    // Basic sanitization: escape any HTML special characters
-    const sanitizedUsername = username.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    welcomeMessage.innerText = `Welcome, ${sanitizedUsername}!`;
+    welcomeMessage.innerText = `Welcome, ${username}!`;
   }
-
-  if (loginBtn) {
-    loginBtn.innerText = "Change Username";
-  }
+};
 
   level = localStorage.getItem("level");
 
