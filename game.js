@@ -28,16 +28,6 @@ const hardCards = [
   "Alessandro Volta", "Electrical Battery"
 ];
 
-// handles form submission
-function onLoginSubmit() {
-  let username = document.getElementById("username").value;
-
-  // validates username so that only letters and numbers are allowed
-  if (!/^[a-zA-Z0-9]+$/.test(username)) {
-    alert("Username can only contain letters and numbers.");
-    return false;
-  }
-
 function howToPlay() {
   document.getElementById("how-to-play-overlay").style.display = "flex";
 }
