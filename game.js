@@ -28,6 +28,16 @@ const hardCards = [
   "Alessandro Volta", "Electrical Battery"
 ];
 
+// Scientist-invention mapping
+const scientistMap = {
+  "Thomas Edison": "Light Bulb",
+  "Nikola Tesla": "Tesla Coil",
+  "Johannes Gutenberg": "Printing Press",
+  "Guglielmo Marconi": "Wireless Telegraph",
+  "Alexander Graham Bell": "Telephone",
+  "Alessandro Volta": "Electrical Battery"
+};
+
 function howToPlay() {
   document.getElementById("how-to-play-overlay").style.display = "flex";
 }
@@ -39,7 +49,7 @@ function startGame(selectedLevel) {
 }
 
 window.onload = function () {
-  username = localStorage.getItem("username");
+  let username = localStorage.getItem("username");
   document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
   document.getElementById("login-btn").innerText = "Change Username";
 
@@ -59,12 +69,16 @@ window.onload = function () {
     window.gameTime = 90;
   }
 
+  // High score setup after level is known
+  window.highScoreKey = `highScore_${level}`;
+  window.highScore = parseInt(localStorage.getItem(highScoreKey)) || 0;
+
   const startBtn = document.getElementById("start-game-btn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
       document.getElementById("start-game-overlay").style.display = "none";
       setupGame(window.cardsToUse, window.gameTime);
-      showHighScore(); // Show high score on game start
+      showHighScore();
     });
   }
 };
@@ -77,6 +91,8 @@ function setupGame(cards, gameTime) {
   timeLeft = gameTime;
   updatePointsDisplay();
   updateTimerDisplay();
+  matches = 0;
+  points = 0;
 
   cards.forEach(name => {
     const card = document.createElement("div");
@@ -130,11 +146,17 @@ function flipCard(card) {
   }
 }
 
+function isMatch(name1, name2) {
+  return name1 === name2 ||
+    scientistMap[name1] === name2 ||
+    scientistMap[name2] === name1;
+}
+
 function checkMatch() {
   const name1 = firstCard.dataset.name;
   const name2 = secondCard.dataset.name;
 
-  if (name1 === name2) {
+  if (isMatch(name1, name2)) {
     firstCard.classList.add("matched");
     secondCard.classList.add("matched");
     points += 10;
@@ -186,24 +208,11 @@ function resetFlippedCards() {
 }
 
 function showEndGamePopup(message) {
-  checkAndUpdateHighScore(); // Check and update high score before showing popup
-  const popup = document.createElement("div");
-  popup.className = "overlay";
-  popup.style.display = "flex";
-  popup.innerHTML = `
-    <div class="field-set">
-      <h2>${message}</h2>
-      <button onclick="window.location.href='index.html'" class="btn">Return to Home</button>
-      <button onclick="window.location.reload()" class="btn">Play Again</button>
-    </div>
-  `;
-  document.body.appendChild(popup);
+  checkAndUpdateHighScore();
+  document.getElementById("game-over-message").innerText = message;
+  document.getElementById("final-score").innerText = `Your Score: ${points}`;
+  document.getElementById("game-over-overlay").style.display = "flex";
 }
-
-// ----- High Score Handling (Added Below) -----
-
-const highScoreKey = `highScore_${level}`;
-let highScore = parseInt(localStorage.getItem(highScoreKey)) || 0;
 
 function showHighScore() {
   const highScoreDisplay = document.getElementById("high-score");
@@ -217,4 +226,12 @@ function checkAndUpdateHighScore() {
     localStorage.setItem(highScoreKey, points);
     alert(`New High Score! You beat the previous score of ${highScore} with ${points} points!`);
   }
-};
+}
+
+function restartGame() {
+  window.location.reload();
+}
+
+function goHome() {
+  window.location.href = "index.html";
+}
