@@ -39,7 +39,8 @@ const scientistMap = {
 };
 
 function howToPlay() {
-  document.getElementById("how-to-play-overlay").style.display = "flex";
+  const howToPlayOverlay = document.getElementById("how-to-play-overlay");
+  if (howToPlayOverlay) howToPlayOverlay.style.display = "flex";
 }
 
 function startGame(selectedLevel) {
@@ -49,9 +50,19 @@ function startGame(selectedLevel) {
 }
 
 window.onload = function () {
-  let username = localStorage.getItem("username");
-  document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
-  document.getElementById("login-btn").innerText = "Change Username";
+  const username = localStorage.getItem("username") || "Guest";
+  const welcomeMessage = document.getElementById("welcome-message");
+  const loginBtn = document.getElementById("login-btn");
+
+  if (welcomeMessage) {
+    // Basic sanitization: escape any HTML special characters
+    const sanitizedUsername = username.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    welcomeMessage.innerText = `Welcome, ${sanitizedUsername}!`;
+  }
+
+  if (loginBtn) {
+    loginBtn.innerText = "Change Username";
+  }
 
   level = localStorage.getItem("level");
 
@@ -69,14 +80,14 @@ window.onload = function () {
     window.gameTime = 90;
   }
 
-  // High score setup after level is known
   window.highScoreKey = `highScore_${level}`;
   window.highScore = parseInt(localStorage.getItem(highScoreKey)) || 0;
 
   const startBtn = document.getElementById("start-game-btn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
-      document.getElementById("start-game-overlay").style.display = "none";
+      const overlay = document.getElementById("start-game-overlay");
+      if (overlay) overlay.style.display = "none";
       setupGame(window.cardsToUse, window.gameTime);
       showHighScore();
     });
@@ -85,6 +96,8 @@ window.onload = function () {
 
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
+  if (!gameBoard) return;
+
   gameBoard.innerHTML = "";
   cards = shuffle(cards);
   totalPairs = cards.length / 2;
@@ -194,11 +207,17 @@ function shuffle(array) {
 }
 
 function updatePointsDisplay() {
-  document.getElementById("points").innerText = `Points: ${points}`;
+  const pointsDisplay = document.getElementById("points");
+  if (pointsDisplay) {
+    pointsDisplay.innerText = `Points: ${points}`;
+  }
 }
 
 function updateTimerDisplay() {
-  document.getElementById("timer").innerText = `Time Left: ${timeLeft}`;
+  const timerDisplay = document.getElementById("timer");
+  if (timerDisplay) {
+    timerDisplay.innerText = `Time Left: ${timeLeft}`;
+  }
 }
 
 function resetFlippedCards() {
@@ -209,9 +228,13 @@ function resetFlippedCards() {
 
 function showEndGamePopup(message) {
   checkAndUpdateHighScore();
-  document.getElementById("game-over-message").innerText = message;
-  document.getElementById("final-score").innerText = `Your Score: ${points}`;
-  document.getElementById("game-over-overlay").style.display = "flex";
+  const gameOverMsg = document.getElementById("game-over-message");
+  const finalScore = document.getElementById("final-score");
+  const overlay = document.getElementById("game-over-overlay");
+
+  if (gameOverMsg) gameOverMsg.innerText = message;
+  if (finalScore) finalScore.innerText = `Your Score: ${points}`;
+  if (overlay) overlay.style.display = "flex";
 }
 
 function showHighScore() {
