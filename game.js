@@ -226,11 +226,9 @@ function resetFlippedCards() {
 function showEndGamePopup(message) {
   checkAndUpdateHighScore();
   const gameOverMsg = document.getElementById("game-over-message");
-  const finalScore = document.getElementById("final-score");
   const overlay = document.getElementById("game-over-overlay");
 
   if (gameOverMsg) gameOverMsg.innerText = message;
-  if (finalScore) finalScore.innerText = `Your Score: ${points}`;
   if (overlay) overlay.style.display = "flex";
 }
 
