@@ -43,6 +43,10 @@ function howToPlay() {
   if (howToPlayOverlay) howToPlayOverlay.style.display = "flex";
 }
 
+function showDifficultyOverlay() {
+  document.getElementById("difficulty-overlay").style.display = "flex";
+}
+
 function closePopup(popupId) {
   document.getElementById(popupId).style.display = "none";
 }
