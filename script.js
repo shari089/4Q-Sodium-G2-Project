@@ -34,6 +34,9 @@ function showDifficultyOverlay() {
   document.getElementById("difficulty-overlay").style.display = "flex";
 }
 
+function showLoginForm() {
+  document.getElementById("login-form").style.display = "flex";
+} 
 function howToPlay() {
   document.getElementById("how-to-play-overlay").style.display = "flex";
 }
