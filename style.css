@@ -13,6 +13,10 @@ body {
   position: relative;
 }
 
+h2 {
+  margin-top: 0;
+}
+
 .background-video {
   position: fixed;
   top: 50px;
