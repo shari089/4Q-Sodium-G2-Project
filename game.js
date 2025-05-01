@@ -56,7 +56,6 @@ window.onload = function () {
   if (welcomeMessage) {
     welcomeMessage.innerText = `Welcome, ${username}!`;
   }
-};
 
   level = localStorage.getItem("level");
 
