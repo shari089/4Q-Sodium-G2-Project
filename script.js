@@ -1,54 +1,55 @@
 // HOME PAGE
 // handles form submission
 function onLoginSubmit() {
-  let username = document.getElementById("username").value;
+  let username = document.getElementById("username").value.trim();
 
-  // validates username so that only letters and numbers are allowed
+  // Check for empty input
+  if (!username) {
+    alert("Username cannot be empty.");
+    return false;
+  }
+
+  // Validate: letters and numbers only
   if (!/^[a-zA-Z0-9]+$/.test(username)) {
     alert("Username can only contain letters and numbers.");
     return false;
   }
 
-  // store username and show welcome
+  // Store username and update UI
   localStorage.setItem("username", username);
-  document.getElementById("welcome-message").innerText = `Welcome, ${username}!`;
-
-  // change button text to "Change Username"
-  const loginBtn = document.getElementById("login-btn");
-  loginBtn.innerText = "Change Username";
-
-  // always keep play button visible
+  document.getElementById("welcome-message").textContent = `Welcome, ${username}!`;
+  document.getElementById("login-btn").textContent = "Change Username";
   document.getElementById("play-btn").style.display = "inline-block";
 
   closePopup('overlay');
   return false;
 }
 
-// popups
-function showLoginForm() {
-  document.getElementById("overlay").style.display = "flex";
-}
-function showDifficultyOverlay() {
-  document.getElementById("difficulty-overlay").style.display = "flex";
-}
-function howToPlay() {
-  document.getElementById("how-to-play-overlay").style.display = "flex";
-}
+// popup controls
 function closePopup(popupId) {
   document.getElementById(popupId).style.display = "none";
 }
 
-// on load, check login state & wire up nav active toggle
+function showDifficultyOverlay() {
+  document.getElementById("difficulty-overlay").style.display = "flex";
+}
+
+function howToPlay() {
+  document.getElementById("how-to-play-overlay").style.display = "flex";
+}
+
+// on load, check login state & show UI
 window.onload = function () {
   let savedUsername = localStorage.getItem("username");
-  if (savedUsername) {
-    document.getElementById("welcome-message").innerText = `Welcome, ${savedUsername}!`;
-    document.getElementById("login-btn").innerText = "Change Username";
+
+  if (savedUsername && savedUsername.trim() !== "") {
+    document.getElementById("welcome-message").textContent = `Welcome, ${savedUsername}!`;
+    document.getElementById("login-btn").textContent = "Change Username";
     document.getElementById("play-btn").style.display = "inline-block";
   }
 };
 
-//active nav bars
+// navbar active link toggle
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.nav-list a').forEach(link => {
     link.addEventListener('click', function () {
@@ -58,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// difficulty selector
 function startGame(difficulty) {
   localStorage.setItem("level", difficulty);
   window.location.href = "game.html";
