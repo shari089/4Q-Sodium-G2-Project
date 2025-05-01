@@ -1,3 +1,4 @@
+// selected cards, score, time, matches
 let firstCard = null;
 let secondCard = null;
 let points = 0;
@@ -8,7 +9,7 @@ let totalPairs;
 let lockBoard = false;
 let level = localStorage.getItem("level");
 
-// EASY cards
+// easy cards
 const easyCards = [
   "Avocado", "Avocado",
   "Banana", "Banana",
@@ -18,7 +19,7 @@ const easyCards = [
   "Strawberry", "Strawberry"
 ];
 
-// HARD cards (scientists and inventions)
+// hard cards
 const hardCards = [
   "Thomas Edison", "Light Bulb",
   "Nikola Tesla", "Tesla Coil",
@@ -28,7 +29,7 @@ const hardCards = [
   "Alessandro Volta", "Electrical Battery"
 ];
 
-// Scientist-invention mapping
+// match scientist to invention
 const scientistMap = {
   "Thomas Edison": "Light Bulb",
   "Nikola Tesla": "Tesla Coil",
@@ -38,41 +39,47 @@ const scientistMap = {
   "Alessandro Volta": "Electrical Battery"
 };
 
+// show how to play overlay
 function howToPlay() {
   const howToPlayOverlay = document.getElementById("how-to-play-overlay");
   if (howToPlayOverlay) howToPlayOverlay.style.display = "flex";
 }
 
+// show difficulty select
 function showDifficultyOverlay() {
   document.getElementById("difficulty-overlay").style.display = "flex";
 }
 
+// close overlay by id
 function closePopup(popupId) {
   document.getElementById(popupId).style.display = "none";
 }
 
+// set level and go to game page
 function startGame(selectedLevel) {
   level = selectedLevel;
   localStorage.setItem("level", level);
   window.location.href = "game.html";
 }
 
+// on page load
 window.onload = function () {
+  // show welcome message
   const username = localStorage.getItem("username") || "Guest";
   const welcomeMessage = document.getElementById("welcome-message");
-
   if (welcomeMessage) {
     welcomeMessage.innerText = `Welcome, ${username}!`;
   }
 
+  // get level or go home
   level = localStorage.getItem("level");
-
   if (!level) {
     alert("No difficulty selected! Returning to home page.");
     window.location.href = "index.html";
     return;
   }
 
+  // set cards and time
   if (level === "easy") {
     window.cardsToUse = easyCards.slice();
     window.gameTime = 60;
@@ -81,9 +88,11 @@ window.onload = function () {
     window.gameTime = 90;
   }
 
+  // get high score
   window.highScoreKey = `highScore_${level}`;
   window.highScore = parseInt(localStorage.getItem(highScoreKey)) || 0;
 
+  // start game on click
   const startBtn = document.getElementById("start-game-btn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
@@ -95,6 +104,7 @@ window.onload = function () {
   }
 };
 
+// setup game board
 function setupGame(cards, gameTime) {
   const gameBoard = document.getElementById("game-board");
   if (!gameBoard) return;
@@ -108,6 +118,7 @@ function setupGame(cards, gameTime) {
   matches = 0;
   points = 0;
 
+  // create cards
   cards.forEach(name => {
     const card = document.createElement("div");
     card.className = "card";
@@ -135,6 +146,7 @@ function setupGame(cards, gameTime) {
     gameBoard.appendChild(card);
   });
 
+  // start countdown
   timer = setInterval(() => {
     timeLeft--;
     updateTimerDisplay();
@@ -145,6 +157,7 @@ function setupGame(cards, gameTime) {
   }, 1000);
 }
 
+// flip logic
 function flipCard(card) {
   if (lockBoard) return;
   if (card.classList.contains("matched") || card.classList.contains("flipped") || card === firstCard) return;
@@ -160,12 +173,14 @@ function flipCard(card) {
   }
 }
 
+// check name match or scientist-invention
 function isMatch(name1, name2) {
   return name1 === name2 ||
     scientistMap[name1] === name2 ||
     scientistMap[name2] === name1;
 }
 
+// check if flipped cards match
 function checkMatch() {
   const name1 = firstCard.dataset.name;
   const name2 = secondCard.dataset.name;
@@ -175,7 +190,6 @@ function checkMatch() {
     secondCard.classList.add("matched");
     points += 10;
     matches++;
-
     resetFlippedCards();
 
     if (matches === totalPairs) {
@@ -189,6 +203,7 @@ function checkMatch() {
       timeLeft = Math.max(0, timeLeft - 5);
     }
 
+    // flip back after delay
     setTimeout(() => {
       firstCard.classList.remove("flipped");
       secondCard.classList.remove("flipped");
@@ -199,6 +214,7 @@ function checkMatch() {
   updatePointsDisplay();
 }
 
+// shuffle cards
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -207,6 +223,7 @@ function shuffle(array) {
   return array;
 }
 
+// update points text
 function updatePointsDisplay() {
   const pointsDisplay = document.getElementById("points");
   if (pointsDisplay) {
@@ -214,6 +231,7 @@ function updatePointsDisplay() {
   }
 }
 
+// update timer text
 function updateTimerDisplay() {
   const timerDisplay = document.getElementById("timer");
   if (timerDisplay) {
@@ -221,12 +239,14 @@ function updateTimerDisplay() {
   }
 }
 
+// reset flipped cards
 function resetFlippedCards() {
   firstCard = null;
   secondCard = null;
   lockBoard = false;
 }
 
+// show end popup
 function showEndGamePopup(message) {
   checkAndUpdateHighScore();
   const gameOverMsg = document.getElementById("game-over-message");
@@ -236,6 +256,7 @@ function showEndGamePopup(message) {
   if (overlay) overlay.style.display = "flex";
 }
 
+// show high score
 function showHighScore() {
   const highScoreDisplay = document.getElementById("high-score");
   if (highScoreDisplay) {
@@ -243,6 +264,7 @@ function showHighScore() {
   }
 }
 
+// update high score if beaten
 function checkAndUpdateHighScore() {
   if (points > highScore) {
     localStorage.setItem(highScoreKey, points);
@@ -250,6 +272,7 @@ function checkAndUpdateHighScore() {
   }
 }
 
+// reload page 
 function restartGame() {
   window.location.reload();
 }
@@ -264,6 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// go to homepage
 function goHome() {
   window.location.href = "index.html";
 }
