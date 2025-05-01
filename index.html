@@ -1,111 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Picture Pairs</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href='https://fonts.googleapis.com/css?family=Pixelify Sans' rel="stylesheet">
-</head>
-<body>
-  <video autoplay muted loop playsinline class="background-video">
-  <source src="mainMenu.mp4" type="video/mp4" />
-  </video>
-
-  <!-- Login Overlay -->
-  <div class="overlay" id="overlay">
-    <form id="login-form" class="field-set" onsubmit="return onLoginSubmit();">
-      <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
-      <legend id="login-legend">Enter Username</legend><br>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required><br><br>
-      <input type="reset" class="log-in-btn" value="RESET">
-      <input type="submit" class="log-in-btn" value="SUBMIT">
-    </form>
-  </div>
-
-  <!-- Difficulty Overlay -->
-  <div class="overlay" id="difficulty-overlay">
-    <div class="field-set">
-      <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
-      <h2>Choose Difficulty Level</h2>
-      <button class="btn" onclick="startGame('easy');">Easy</button>
-      <button class="btn" onclick="startGame('hard');">Hard</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Picture Pairs</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Pixelify Sans' rel="stylesheet">
+  </head>
+  <body>
+    <video autoplay muted loop playsinline class="background-video">
+    <source src="mainMenu.mp4" type="video/mp4" />
+    </video>
+  
+    <!-- Login Overlay -->
+    <div class="overlay" id="overlay">
+      <form id="login-form" class="field-set" onsubmit="return onLoginSubmit();">
+        <button type="button" class="close-btn" onclick="closePopup('overlay')">X</button>
+        <legend id="login-legend">Enter Username</legend><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <input type="reset" class="log-in-btn" value="RESET">
+        <input type="submit" class="log-in-btn" value="SUBMIT">
+      </form>
     </div>
-  </div>
-
-  <!-- How to Play Overlay -->
-  <div class="overlay" id="how-to-play-overlay">
-    <div class="howToPlay-field-set">
-      <button type="button" class="close-btn"
-              onclick="closePopup('how-to-play-overlay')">X</button>
-      <section>
-        <div id="r-1" class="r-1">
-          <div id="r-1-0" class="how_to_play_card">
-            <h2>Objectives</h2>
-            <p>Find all matching pairs of cards within the given time limit.</p>
-          </div>
-          <div id="r-1-1" class="how_to_play_card">
-            <h2>Difficulty Levels</h2>
-            <p><strong>Easy Version:</strong> Picture Matching.</p>
-            <p><strong>Hard Version:</strong> Scientist-invention matching.</p>
-          </div>
-          
-          <div id="r-1-2" class="how_to_play_card">
-            <h2>How to Play</h2>
-            <p>Flip two cards and match identical ones or scientist‑invention pairs within the time‑limit.</p>
-          </div>
-        </div>
-        
-        <div id="r-2" class="r-2">
-          <div id="r-2-0" class="how_to_play_card">
-            <h2>Rules & Constraints</h2>
-            <p><strong>Card Selection:</strong> Two at a time.</p>
-            <p><strong>Matching:</strong> Must be exact.</p>
-            <p><strong>Time Limit:</strong> Set per level.</p>
-          </div>
-          <div id="r-2-1" class="how_to_play_card">
-            <h2>Scoring System</h2>
-            <p><strong>Correct:</strong> +10 points</p>
-            <p><strong>Incorrect:</strong> -2 points</p>
-            <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
-          </div>
-          <div id="r-2-2" class="how_to_play_card">
-            <h2>Player Count</h2>
-            <p><strong>Single‑Player:</strong> Designed for one.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-  </div>
-
-  <!-- Header / Nav -->
-  <header class="header">
-    <div class="container-1">
-      <a href="index.html" class="logo">
-        <img src="logo.png" alt="Logo">
-      </a>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li><a href="#" class="nav-link">Home</a></li>
-          <li><a href="#" class="nav-link">Leaderboard</a></li>
-          <li><a href="#" class="nav-link">About</a></li>
-          <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
-        </ul>
-      </nav>
-      <div class="actions">
-        <span id="welcome-message" class="welcome-message"></span>
-        <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Enter Username</button>
+  
+    <!-- Difficulty Overlay -->
+    <div class="overlay" id="difficulty-overlay">
+      <div class="field-set">
+        <button type="button" class="close-btn" onclick="closePopup('difficulty-overlay')">X</button>
+        <h2>Choose Difficulty Level</h2>
+        <button class="btn" onclick="startGame('easy');">Easy</button>
+        <button class="btn" onclick="startGame('hard');">Hard</button>
       </div>
     </div>
-  </header>
-
-  <!-- Play Button -->
-  <div class="play-btn-position">
-    <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
-  </div>
   
-  <script src="script.js"></script>
+    <div class="overlay" id="how-to-play-overlay">
+      <div class="howToPlay-field-set">
+        <button type="button" class="close-btn"
+                onclick="closePopup('how-to-play-overlay')">X</button>
+        <section>
+          <div id="r-1" class="r-1">
+            <div id="r-1-0" class="how_to_play_card">
+              <h2>Objectives</h2>
+              <p>Find all matching pairs of cards within the given time limit.</p>
+            </div>
+            <div id="r-1-1" class="how_to_play_card">
+              <h2>Difficulty Levels</h2>
+              <p><strong>Easy Version:</strong> Picture Matching </p>
+              <p><strong>Hard Version:</strong> Scientist-invention matching</p>
+            </div>
+            <div id="r-1-2" class="how_to_play_card">
+              <h2>How to Play</h2>
+              <p>Flip two cards and match identical or scientist‑invention pairs within the time‑limit. </p>
+            </div>
+          </div>
+          <div id="r-2" class="r-2">
+            <div id="r-2-0" class="how_to_play_card">
+              <h2>Rules & Constraints</h2>
+              <p><strong>Card Selection:</strong> Only two cards at a time can be selected. </p>
+              <p><strong>Matching:</strong> Easy mode pairs must be identical. Hard mode pairs must be inventor to invention. </p>
+              <p><strong>Time Limit:</strong> Easy mode starts at 60 seconds. Hard mode starts at 90 seconds.</p>
+              <p><strong>Time Penalty:</strong> Score cannot go below 0, so a penalty of -2 seconds in time is applied if score tries to go below 0.</p>
+            </div>
+            <div id="r-2-1" class="how_to_play_card">
+              <h2>Scoring System</h2>
+              <p><strong>Correct:</strong> +10 points</p>
+              <p><strong>Incorrect:</strong> -2 points</p>
+              <p><strong>Combo:</strong> +15 after 3 correct in a row</p>
+            </div>
+            <div id="r-2-2" class="how_to_play_card">
+              <h2>Player Count</h2>
+              <p><strong>Single‑Player Mode:</strong> The game is designed for only one player.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   
-</body>
+    <!-- Header / Nav -->
+    <header class="header">
+      <div class="container-1">
+        <a href="index.html" class="logo">
+          <img src="logo.png" alt="Logo">
+        </a>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li><a href="#" class="nav-link">Home</a></li>
+            <li><a href="#" class="nav-link">Leaderboard</a></li>
+            <li><a href="#" class="nav-link">About</a></li>
+            <li><a href="#" class="nav-link" onclick="howToPlay()">How to Play</a></li>
+          </ul>
+        </nav>
+        <div class="actions">
+          <span id="welcome-message" class="welcome-message"></span>
+          <button id="login-btn" class="log-in-btn" onclick="showLoginForm()">Enter Username</button>
+        </div>
+      </div>
+    </header>
+  
+    <!-- Play Button -->
+    <div class="play-btn-position">
+      <button id="play-btn" class="play-btn" style="display: none;" onclick="showDifficultyOverlay()">Play</button>
+    </div>
+    
+    <script src="script.js"></script>
+  </body>
 </html>
