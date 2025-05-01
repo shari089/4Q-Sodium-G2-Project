@@ -268,9 +268,10 @@ section {
   min-height: calc(100vh - 100px);
 }
 
-/* Score and timer */
+/* Score, timer, and highscore */
 .game-header {
-  font-size: 18px;
+  font-size: 1.5rem;
+  font-weight: 600;
   display: flex;
   justify-content: space-between;
   gap: 20px;
@@ -278,6 +279,15 @@ section {
   max-width: 660px;
   margin-bottom: 20px;
   padding: 0 20px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: #61b7fe;
+  backdrop-filter: blur(4px);
+  border: 1px solid #333;
+  margin: 10px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 /* Game board layout */
