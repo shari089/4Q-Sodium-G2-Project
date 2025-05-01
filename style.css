@@ -162,7 +162,8 @@ h2 {
   color: red;
 }
 
-.log-in-btn,
+.log-in-btn, 
+.change-difficulty-btn,
 .btn {
   background-color: rgba(216, 155, 160, 1);
   color: rgba(45, 63, 86, 1);
@@ -179,6 +180,7 @@ h2 {
 }
 
 .log-in-btn:hover,
+.change-difficulty-btn:hover,
 .btn:hover {
   background-color: rgba(197, 123, 129, 1);
   transform: scale(1.1);
