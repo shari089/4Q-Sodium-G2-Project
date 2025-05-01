@@ -221,4 +221,4 @@ function checkAndUpdateHighScore() {
     localStorage.setItem(highScoreKey, points);
     alert(`New High Score! You beat the previous score of ${highScore} with ${points} points!`);
   }
-}
+};
