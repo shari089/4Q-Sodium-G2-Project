@@ -42,8 +42,6 @@ window.onload = function () {
   username = localStorage.getItem("username");
   document.getElementById("welcome-message").innerText = `Welcome, ${username || 'Guest'}!`;
   document.getElementById("login-btn").innerText = "Change Username";
-}
-
 
   level = localStorage.getItem("level");
 
@@ -61,7 +59,6 @@ window.onload = function () {
     window.gameTime = 90;
   }
 
-  // Set up the "Start Game" button
   const startBtn = document.getElementById("start-game-btn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
