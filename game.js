@@ -64,6 +64,7 @@ window.onload = function () {
     startBtn.addEventListener("click", () => {
       document.getElementById("start-game-overlay").style.display = "none";
       setupGame(window.cardsToUse, window.gameTime);
+      showHighScore(); // Show high score on game start
     });
   }
 };
@@ -186,6 +187,7 @@ function resetFlippedCards() {
 }
 
 function showEndGamePopup(message) {
+  checkAndUpdateHighScore(); // Check and update high score before showing popup
   const popup = document.createElement("div");
   popup.className = "overlay";
   popup.style.display = "flex";
@@ -199,5 +201,21 @@ function showEndGamePopup(message) {
   document.body.appendChild(popup);
 }
 
+// ----- High Score Handling (Added Below) -----
 
+const highScoreKey = `highScore_${level}`;
+let highScore = parseInt(localStorage.getItem(highScoreKey)) || 0;
 
+function showHighScore() {
+  const highScoreDisplay = document.getElementById("high-score");
+  if (highScoreDisplay) {
+    highScoreDisplay.innerText = `High Score (${level}): ${highScore}`;
+  }
+}
+
+function checkAndUpdateHighScore() {
+  if (points > highScore) {
+    localStorage.setItem(highScoreKey, points);
+    alert(`New High Score! You beat the previous score of ${highScore} with ${points} points!`);
+  }
+}
