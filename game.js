@@ -110,8 +110,7 @@ function setupGame(cards, gameTime) {
     updateTimerDisplay();
     if (timeLeft <= 0) {
       clearInterval(timer);
-      alert("Time's up! You scored " + points + " points.");
-      window.location.href = "index.html";
+      showEndGamePopup("Time's up! You scored " + points + " points.");
     }
   }, 1000);
 }
