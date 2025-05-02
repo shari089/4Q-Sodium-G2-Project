@@ -65,7 +65,7 @@ function startGame(selectedLevel) {
 // on page load
 window.onload = function () {
   // show welcome message
-  const username = localStorage.getItem("username") || "Guest";
+  const username = localStorage.getItem("username");
   const welcomeMessage = document.getElementById("welcome-message");
   if (welcomeMessage) {
     welcomeMessage.innerText = `Welcome, ${username}!`;
